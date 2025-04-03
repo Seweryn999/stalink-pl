@@ -1,10 +1,9 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  output: "export",
-  experimental: {},
-
-  devIndicators: false,
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  basePath: "/stalink-pl",
+  assetPrefix: "/stalink-pl/",
 };
 
-export default nextConfig;
+module.exports = nextConfig;
