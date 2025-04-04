@@ -57,7 +57,7 @@ const Text3DComponent: React.FC<Text3DProps> = ({
         <Center position={position}>
           <Text3D
             ref={textRef}
-            font="models/helvetiker_regular.typeface.json"
+            font="/models/helvetiker_regular.typeface.json"
             size={1}
             height={0.1}
             curveSegments={64}
