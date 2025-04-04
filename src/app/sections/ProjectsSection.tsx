@@ -21,7 +21,7 @@ export default function ProjectsSection() {
           {/* Completed Project - BB Hair Spa */}
           <div className="relative bg-gray-800 rounded-xl shadow-lg hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 overflow-hidden group mx-auto max-w-[400px] h-[320px]">
             <Image
-              src="/stalink-pl/images/bbhairspa.png"
+              src="/images/bbhairspa.png"
               alt="BB Hair Spa"
               width={400}
               height={320}

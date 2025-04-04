@@ -5,7 +5,7 @@ export default function AboutSection() {
         <div className="flex justify-center md:justify-start mb-8 md:mb-0">
           <div className="w-52 h-52 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-white shadow-md">
             <img
-              src="/stalink-pl/images/seweryn.jpg"
+              src="/images/seweryn.jpg"
               alt="Seweryn Stalinger"
               className="w-full h-full object-cover"
             />
