@@ -6,7 +6,7 @@ export default function StarsBackground() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const generateStars = useCallback(() => {
-    const totalStars = 333;
+    const totalStars = 88;
     const starsArray: string[] = [];
 
     for (let i = 0; i < totalStars; i++) {

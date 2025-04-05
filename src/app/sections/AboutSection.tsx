@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 
 export default function AboutSection() {
   const [isImageOpen, setIsImageOpen] = useState(false);
@@ -47,12 +48,12 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-center text-center md:text-left">
+          <div className="flex flex-col justify-center text-center md:text-left max-w-xl">
             <div className="mb-6 md:mb-12 animate-pulse-slow"></div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-wider uppercase text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-white">
+            <h2 className="text-4xl md:text-5xl font-black tracking-wider uppercase text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-white mb-6">
               O mnie
             </h2>
-            <p className="text-base md:text-2xl text-gray-200 leading-relaxed max-w-xl mx-auto md:mx-0">
+            <p className="text-base md:text-2xl text-gray-200 leading-relaxed mb-6">
               Cześć! Jestem Seweryn Stalinger, frontend developer specjalizujący
               się w Next.js, React, TypeScript i Tailwind CSS. Te technologie to
               klucz do tworzenia stron, które sprzedają: Next.js zapewnia
@@ -62,10 +63,17 @@ export default function AboutSection() {
               responsywnych interfejsów. Twoja strona będzie nie tylko piękna,
               ale i skuteczna w przekuwaniu odwiedzin na zyski.
             </p>
+
+            
+            <Link href="/o-mnie">
+              <button className="btn mt-6 px-8 py-3 rounded-full bg-blue-600 text-white transition-all duration-300 hover:bg-blue-700 hover:scale-105 hover:shadow-[0_0_10px_#3b82f6]">
+                Więcej szczegółów
+              </button>
+            </Link>
           </div>
         </div>
 
-        {/* Modal */}
+        
         {isImageOpen && (
           <div
             className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"

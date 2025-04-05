@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, ChangeEvent, FormEvent } from "react";
-import { Mail, User, MessageSquare } from "lucide-react";
-import { db } from "../../../lib/firebaseConfig"; // 🔥 Import Firebase Firestore
-import { collection, addDoc } from "firebase/firestore"; // 🔥 Import Firestore functions
+import { db } from "../../../lib/firebaseConfig";
+import { collection, addDoc } from "firebase/firestore";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
