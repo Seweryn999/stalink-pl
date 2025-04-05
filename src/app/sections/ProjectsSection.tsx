@@ -27,8 +27,8 @@ export default function ProjectsSection() {
               height={320}
               className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
             />
-            <div className="absolute inset-0 bg-black/50 group-hover:bg-black/60 transition-colors duration-300"></div>
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-black/60 group-hover:bg-black/80 transition-colors duration-300">
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300"></div>
+            <div className="absolute bottom-0 left-0 right-0 p-6 bg-black/60 group-hover:bg-black/70 transition-colors duration-300">
               <h3 className="text-2xl font-semibold text-white">BB Hair Spa</h3>
               <p className="text-gray-400 text-sm leading-relaxed mb-4">
                 Strona salonu fryzjerskiego oparta na Next.js, responsywna,

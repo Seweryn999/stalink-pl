@@ -13,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/logo.svg" />
         <HeroSection />
       </div>
-      <div className="section-container py-20">
+      <div className=" py-20">
         <AboutSection />
       </div>
       <div className="section-container py-20">

@@ -8,7 +8,7 @@ export default function Footer() {
         </p>
         <div className="flex justify-center gap-4 text-sm mb-2">
           <a
-            href="https://github.com/"
+            href="https://github.com/Seweryn999"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-400 transition-all hover:scale-105"
@@ -16,7 +16,7 @@ export default function Footer() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/"
+            href="https://www.linkedin.com/in/seweryn-stalinger-2a31b2297/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-400 transition-all hover:scale-105"
