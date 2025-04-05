@@ -1,8 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { EffectComposer, Bloom } from "@react-three/postprocessing";
+import dynamic from "next/dynamic";
 import Text3DComponent from "./Text3D";
+
+const EffectComposer = dynamic(
+  () => import("@react-three/postprocessing").then((mod) => mod.EffectComposer),
+  { ssr: false }
+);
+const Bloom = dynamic(
+  () => import("@react-three/postprocessing").then((mod) => mod.Bloom),
+  { ssr: false }
+);
 
 const Scene: React.FC = () => {
   const canvasRef = useRef<HTMLDivElement>(null);
@@ -33,25 +42,15 @@ const Scene: React.FC = () => {
       }}
     >
       <Canvas
-        camera={
-          isMobile
-            ? { position: [0, 0, 12], fov: 75 }
-            : { position: [0, 0, 8], fov: 50 }
-        }
-        style={{ width: "100%", height: "100%" }}
-        gl={{ preserveDrawingBuffer: true }}
+        camera={{ position: isMobile ? [0, 0, 15] : [0, 0, 8], fov: 50 }}
+        gl={{ antialias: true, powerPreference: "high-performance" }}
       >
-        <ambientLight intensity={0.3} />
-        <pointLight position={[10, 10, 10]} intensity={1.5} />
-        <pointLight
-          position={[-10, -10, -10]}
-          intensity={0.5}
-          color="#a3bffa"
-        />
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[5, 5, 5]} intensity={1.2} />
         <Text3DComponent
           text="STALINK"
-          position={isMobile ? [0, 1, 0] : [0, 0.5, 0]}
-        />{" "}
+          position={isMobile ? [0, 0.9, 0] : [0, 0.5, 0]}
+        />
         {!isMobile && (
           <OrbitControls
             enableZoom={false}
@@ -61,10 +60,9 @@ const Scene: React.FC = () => {
         )}
         <EffectComposer>
           <Bloom
-            intensity={1.0}
-            luminanceThreshold={0.5}
-            luminanceSmoothing={0.9}
-            height={300}
+            intensity={0.8}
+            luminanceThreshold={0.3}
+            luminanceSmoothing={0.8}
           />
         </EffectComposer>
       </Canvas>

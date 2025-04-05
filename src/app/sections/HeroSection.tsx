@@ -13,9 +13,6 @@ export default function HeroSection() {
       <div className="absolute inset-0"></div>
 
       <Scene />
-
-    
-      
     </section>
   );
 }
