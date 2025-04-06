@@ -64,16 +64,20 @@ export default function AboutSection() {
               ale i skuteczna w przekuwaniu odwiedzin na zyski.
             </p>
 
-            
             <Link href="/o-mnie">
-              <button className="btn mt-6 px-8 py-3 rounded-full bg-blue-600 text-white transition-all duration-300 hover:bg-blue-700 hover:scale-105 hover:shadow-[0_0_10px_#3b82f6]">
+              <button
+                className="mt-6 px-8 py-3 rounded-full bg-blue-600 text-white transition-all duration-300 hover:bg-blue-700 hover:scale-105 hover:shadow-[0_0_10px_#3b82f6] border-2 border-white"
+                style={{
+                  textShadow:
+                    "-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000",
+                }}
+              >
                 Więcej szczegółów
               </button>
             </Link>
           </div>
         </div>
 
-        
         {isImageOpen && (
           <div
             className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"

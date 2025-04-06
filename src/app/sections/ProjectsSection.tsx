@@ -35,9 +35,7 @@ export default function ProjectsSection() {
                 SEO-friendly, z ciemnym eleganckim stylem.
               </p>
               <a
-                href="https://seweryn999.github.io/bb-hair-spa/"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/projekty"
                 className="inline-block mt-2 px-6 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-all duration-200"
               >
                 Zobacz więcej
