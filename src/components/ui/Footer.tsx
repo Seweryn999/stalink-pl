@@ -1,39 +1,41 @@
-export default function Footer() {
+import React from "react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import Link from "next/link";
+
+const Footer: React.FC = () => {
   return (
-    <footer className="bg-black py-6 mt-10 text-center text-gray-300 relative z-10">
-      <div className="container mx-auto">
-        <p className="mb-4 font-mono text-sm">
-          © {new Date().getFullYear()} Seweryn Stalinger. Wszelkie prawa
-          zastrzeżone.
-        </p>
-        <div className="flex justify-center gap-6 text-sm mb-4">
-          {[
-            { href: "https://github.com/Seweryn999", label: "GitHub" },
-            {
-              href: "https://www.linkedin.com/in/seweryn-stalinger-2a31b2297/",
-              label: "LinkedIn",
-            },
-          ].map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-400 transition-transform duration-200 hover:scale-105"
-            >
-              {link.label}
-            </a>
-          ))}
+    <footer className="bg-white text-black py-6 border-t border-gray-200">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
+        <div className="text-sm mb-4 md:mb-0">
+          © {new Date().getFullYear()} Seweryn Stalinger. All rights reserved.
         </div>
-        <div className="text-sm">
-          <a
+        <div className="flex space-x-6 items-center">
+          <Link
             href="/polityka-prywatnosci"
-            className="hover:text-blue-400 transition-transform duration-200 hover:scale-105"
+            className="text-sm hover:text-blue-500 transition"
           >
             Polityka Prywatności
+          </Link>
+          <a
+            href="https://github.com/Seweryn999"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xl hover:text-blue-500 transition"
+          >
+            <FaGithub />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/seweryn-stalinger-2a31b2297/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xl hover:text-blue-500 transition"
+          >
+            <FaLinkedin />
           </a>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

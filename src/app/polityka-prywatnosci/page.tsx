@@ -5,18 +5,18 @@ import Header from "../../components/ui/Header";
 
 export default function PrivacyPolicy() {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-black to-gray-900 flex flex-col items-center px-4 py-12 md:py-20 text-white">
+    <section className="min-h-screen bg-gradient-to-br from-white via-blue-100 to-blue-200 flex flex-col items-center px-4 py-12 md:py-20 text-gray-800">
       <Header />
       <div className="max-w-4xl w-full px-4 space-y-10 pt-16 md:pt-20">
         <link rel="icon" href="/logo.svg" />
 
-        <h1 className="text-3xl md:text-5xl font-black uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-white mb-8 md:mb-12 text-center animate-pulse-slow">
+        <h1 className="text-3xl md:text-5xl font-black uppercase tracking-widest text-gray-800 mb-8 md:mb-12 text-center">
           Polityka Prywatności
         </h1>
 
-        <div className="space-y-8 text-gray-300 leading-relaxed text-base md:text-lg">
+        <div className="space-y-8 leading-relaxed text-base md:text-lg">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4">
               1. Informacje ogólne
             </h2>
             <p>
@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4">
               2. Zakres zbieranych danych osobowych
             </h2>
             <ul className="list-disc pl-5 space-y-2">
@@ -45,7 +45,7 @@ export default function PrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4">
               3. Cel przetwarzania danych osobowych
             </h2>
             <p className="mb-2">
@@ -66,7 +66,7 @@ export default function PrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4">
               4. Prawa użytkownika
             </h2>
             <p className="mb-2">Użytkownik ma prawo do:</p>
@@ -81,7 +81,7 @@ export default function PrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4">
               5. Pliki Cookies
             </h2>
             <p>
@@ -91,7 +91,7 @@ export default function PrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4">
               6. Kontakt
             </h2>
             <p>
@@ -99,7 +99,7 @@ export default function PrivacyPolicy() {
               pod adresem e-mail:{" "}
               <a
                 href="mailto:seweryn.webdev@gmail.com"
-                className="text-blue-400 hover:text-blue-300 underline transition-colors"
+                className="text-blue-500 hover:text-blue-600 underline transition-colors"
               >
                 seweryn.webdev@gmail.com
               </a>

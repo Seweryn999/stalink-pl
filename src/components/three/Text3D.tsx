@@ -16,7 +16,6 @@ const Text3DComponent: React.FC<Text3DProps> = ({
 }) => {
   const textRef = useRef<Mesh>(null!);
   const groupRef = useRef<Group>(null!);
-  const materialRef = useRef<any>(null!);
   const [renderKey, setRenderKey] = useState(0);
 
   useEffect(() => {
@@ -25,23 +24,14 @@ const Text3DComponent: React.FC<Text3DProps> = ({
 
   useEffect(() => {
     if (textRef.current) {
-      const scaleFactor = isMobile ? 0.4 : 1.0;
+      const scaleFactor = isMobile ? 0.8 : 1.0; // Zwiększony scaleFactor dla mobile
       textRef.current.scale.set(scaleFactor, scaleFactor, scaleFactor);
     }
   }, [isMobile]);
 
-  useFrame(({ clock }) => {
+  useFrame(() => {
     if (groupRef.current) {
-      groupRef.current.position.y =
-        position[1] + Math.sin(clock.getElapsedTime() * 0.5) * 0.05;
-
-      if (isMobile) {
-        groupRef.current.rotation.y += 0.01;
-      }
-    }
-    if (materialRef.current) {
-      materialRef.current.emissiveIntensity =
-        0.8 + Math.sin(clock.getElapsedTime() * 2) * 0.3;
+      groupRef.current.rotation.y += 0.003;
     }
   });
 
@@ -52,24 +42,26 @@ const Text3DComponent: React.FC<Text3DProps> = ({
           <Text3D
             ref={textRef}
             font="/models/helvetiker_regular.typeface.json"
-            size={1}
-            height={0.1}
+            size={isMobile ? 1.2 : 1.0} // Zwiększony rozmiar dla mobile
+            height={isMobile ? 0.25 : 0.2} // Większa grubość dla mobile
             curveSegments={64}
             bevelEnabled
-            bevelThickness={0.02}
-            bevelSize={0.04}
-            bevelSegments={12}
+            bevelThickness={0.05}
+            bevelSize={0.03}
+            bevelSegments={16}
           >
             {text}
             <meshPhysicalMaterial
-              ref={materialRef}
-              color="#e0e7ff"
-              metalness={0.2}
-              roughness={0.4}
-              clearcoat={0.5}
-              clearcoatRoughness={0.3}
-              emissive="#a3bffa"
-              emissiveIntensity={0.8}
+              color="#0a1931"
+              metalness={0.9}
+              roughness={0.2}
+              clearcoat={0.9}
+              clearcoatRoughness={0.15}
+              emissive="#1b3b6f"
+              emissiveIntensity={0.7}
+              reflectivity={0.9}
+              transparent={true}
+              opacity={0.95}
             />
           </Text3D>
         </Center>

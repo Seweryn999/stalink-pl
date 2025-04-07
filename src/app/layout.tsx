@@ -1,6 +1,5 @@
 import "./globals.css";
 import { ReactNode } from "react";
-import StarsBackground from "../components/ui/StarsBackground";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
@@ -12,10 +11,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pl">
-      <body className="relative text-white overflow-x-hidden min-h-screen">
-        <StarsBackground />
+      <body className="w-full relative text-gray-800 overflow-x-hidden min-h-screen bg-gradient-to-br from-[#e1effb] via-[#d0e7f9] to-[#f0f7ff]">
         <Analytics />
-        <div className="relative z-10">{children}</div>
+        <div className="relative z-10 w-full">{children}</div>
       </body>
     </html>
   );

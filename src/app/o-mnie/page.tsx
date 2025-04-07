@@ -1,23 +1,39 @@
+"use client";
+
 import Header from "../../components/ui/Header";
 import Footer from "../../components/ui/Footer";
-import StarsBackground from "../../components/ui/StarsBackground";
 import Image from "next/image";
+import { motion } from "framer-motion";
+
+const fadeInVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function AboutPage() {
   return (
     <>
-      <StarsBackground />
       <Header />
-      <section className="min-h-screen py-20 sm:py-32 lg:py-40 flex justify-center text-white bg-black">
+      <section className="min-h-screen py-20 sm:py-32 lg:py-40 flex justify-center bg-gradient-to-br from-white via-blue-100 to-blue-200">
         <div className="max-w-6xl w-full px-6 sm:px-8 lg:px-10 flex flex-col items-center gap-y-16">
-          <link rel="icon" href="/logo.svg" />
-
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-white mb-12">
+          <motion.h1
+            className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-widest text-gray-800 mb-12 text-center"
+            variants={fadeInVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.8 }}
+          >
             O mnie
-          </h1>
+          </motion.h1>
 
           <div className="flex flex-col lg:flex-row gap-12 items-center w-full">
-            <div className="relative group rounded-full border-4 border-gray-700 overflow-hidden w-72 h-72 flex-shrink-0 transition-all duration-500 hover:shadow-[0_0_30px_#3b82f6] hover:scale-105">
+            <motion.div
+              className="relative group rounded-full border-4 border-blue-300 overflow-hidden w-72 h-72 flex-shrink-0 transition-all duration-500 hover:shadow-xl hover:scale-105"
+              variants={fadeInVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               <Image
                 src="/images/seweryn1.jpg"
                 alt="Seweryn Stalinger"
@@ -25,9 +41,15 @@ export default function AboutPage() {
                 height={400}
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
               />
-            </div>
+            </motion.div>
 
-            <div className="text-gray-300 leading-relaxed text-lg space-y-6 max-w-3xl text-left">
+            <motion.div
+              className="text-gray-700 leading-relaxed text-lg space-y-6 max-w-3xl text-left"
+              variants={fadeInVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               <p>
                 Nazywam się <strong>Seweryn Stalinger</strong> i jestem frontend
                 developerem z pasją do tworzenia nowoczesnych, responsywnych i
@@ -50,47 +72,54 @@ export default function AboutPage() {
                   umiejętności w React od Meta (Facebook).
                 </li>
               </ul>
-            </div>
+            </motion.div>
           </div>
 
-          <div className="space-y-12 w-full mt-12 max-w-4xl text-left">
-            <h2 className="text-3xl font-bold text-white mb-6 text-center">
+          <motion.div
+            className="space-y-12 w-full mt-12 max-w-4xl text-left"
+            variants={fadeInVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
               Dlaczego używam tych technologii?
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="group relative border border-gray-700 rounded-xl p-6 shadow transition-transform transform hover:scale-105 hover:border-blue-600">
-                <h3 className="text-xl font-bold text-white mb-3">Next.js</h3>
-                <p className="text-gray-300">
-                  Strony stworzone z Next.js ładują się błyskawicznie dzięki
-                  zaawansowanym technikom optymalizacji. To oznacza lepsze
-                  pozycjonowanie w Google i więcej klientów na Twojej stronie.
-                </p>
-              </div>
-
-              <div className="group relative border border-gray-700 rounded-xl p-6 shadow transition-transform transform hover:scale-105 hover:border-blue-600">
-                <h3 className="text-xl font-bold text-white mb-3">
-                  TypeScript
-                </h3>
-                <p className="text-gray-300">
-                  TypeScript gwarantuje bezbłędne działanie strony i jej
-                  stabilność. Klienci widzą profesjonalizm i jakość, co buduje
-                  ich zaufanie i zwiększa szanse na sprzedaż.
-                </p>
-              </div>
-
-              <div className="group relative border border-gray-700 rounded-xl p-6 shadow transition-transform transform hover:scale-105 hover:border-blue-600">
-                <h3 className="text-xl font-bold text-white mb-3">
-                  Tailwind CSS
-                </h3>
-                <p className="text-gray-300">
-                  Dzięki Tailwind CSS Twoja strona jest estetyczna, nowoczesna i
-                  w pełni responsywna. Piękny design przyciąga uwagę i skłania
-                  do zakupów.
-                </p>
-              </div>
+              {[
+                {
+                  title: "Next.js",
+                  description:
+                    "Strony stworzone z Next.js ładują się błyskawicznie dzięki zaawansowanym technikom optymalizacji. To oznacza lepsze pozycjonowanie w Google i więcej klientów na Twojej stronie.",
+                },
+                {
+                  title: "TypeScript",
+                  description:
+                    "TypeScript gwarantuje bezbłędne działanie strony i jej stabilność. Klienci widzą profesjonalizm i jakość, co buduje ich zaufanie i zwiększa szanse na sprzedaż.",
+                },
+                {
+                  title: "Tailwind CSS",
+                  description:
+                    "Dzięki Tailwind CSS Twoja strona jest estetyczna, nowoczesna i w pełni responsywna. Piękny design przyciąga uwagę i skłania do zakupów.",
+                },
+              ].map((tech, index) => (
+                <motion.div
+                  key={index}
+                  className="group relative border border-blue-300 rounded-xl p-6 shadow transition-transform transform hover:scale-105 hover:border-blue-600 bg-white"
+                  variants={fadeInVariants}
+                  initial="hidden"
+                  animate="visible"
+                  transition={{ duration: 0.8, delay: 0.8 + index * 0.2 }}
+                >
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">
+                    {tech.title}
+                  </h3>
+                  <p className="text-gray-700">{tech.description}</p>
+                </motion.div>
+              ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
       <Footer />

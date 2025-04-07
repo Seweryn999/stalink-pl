@@ -4,6 +4,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { db } from "../../../lib/firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
 import { Github, Linkedin } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -42,19 +43,29 @@ export default function ContactSection() {
   };
 
   return (
-    <section
+    <motion.section
       id="contact"
-      className="min-h-screen from-black to-gray-900 flex items-center justify-center px-4 py-20"
+      className="min-h-screen bg-gradient-to-br from-white via-blue-100 to-blue-200 flex items-center justify-center px-4 py-20"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
     >
       <div className="w-full max-w-5xl flex flex-col md:flex-row items-center justify-center gap-12 mx-auto">
         {/* Formularz */}
-        <div className="w-full md:w-2/3">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-white mb-12 text-center md:text-left">
+        <motion.div
+          className="w-full md:w-2/3"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="!mb-3 text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-widest text-gray-800  text-center md:text-left">
             Skontaktuj się
           </h2>
 
           {submitted ? (
-            <div className="text-center text-white text-xl font-medium animate-fade-in">
+            <div className="text-center text-blue-600 text-xl font-medium animate-fade-in">
               ✓ Wiadomość wysłana! Dziękuję za kontakt.
             </div>
           ) : (
@@ -66,7 +77,7 @@ export default function ContactSection() {
                   placeholder="Twoje imię"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-gray-800 text-white p-3 rounded-md"
+                  className="!mb-3 !px-2 !py-2 w-full bg-blue-50 text-gray-800 p-3 rounded-md border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   required
                 />
               </div>
@@ -78,7 +89,7 @@ export default function ContactSection() {
                   placeholder="Twój email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-gray-800 text-white p-3 rounded-md"
+                  className="!mb-3 !px-2 !py-2 w-full bg-blue-50 text-gray-800 p-3 rounded-md border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   required
                 />
               </div>
@@ -90,7 +101,7 @@ export default function ContactSection() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
-                  className="w-full bg-gray-800 text-white p-3 rounded-md"
+                  className="!mb-3 !px-2 !py-2 w-full bg-blue-50 text-gray-800 p-3 rounded-md border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   required
                 />
               </div>
@@ -99,10 +110,10 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`relative px-8 py-2 rounded-md font-medium text-white transition-all duration-150 border-2 border-white ${
+                  className={`relative !mt-2 !px-2 !py-2 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_10px_#60a5fa] border-2 border-blue-300 ${
                     loading
-                      ? "bg-gray-600 cursor-not-allowed"
-                      : "bg-blue-600 hover:bg-blue-700 hover:scale-105 hover:shadow-[0_0_10px_#3b82f6]"
+                      ? "bg-blue-300 cursor-not-allowed text-gray-600"
+                      : "bg-white text-blue-500 hover:bg-blue-50"
                   }`}
                 >
                   {loading ? "Wysyłanie..." : "Wyślij"}
@@ -110,15 +121,21 @@ export default function ContactSection() {
               </div>
             </form>
           )}
-        </div>
+        </motion.div>
 
         {/* Linki do social media */}
-        <div className="flex flex-col items-center md:items-start gap-6 self-center md:self-auto mt-8 md:mt-0">
+        <motion.div
+          className="flex flex-col items-center md:items-start gap-6 self-center md:self-auto mt-8 md:mt-0"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
           <button
             onClick={() =>
               window.open("https://github.com/Seweryn999", "_blank")
             }
-            className="flex items-center gap-4 bg-gray-800 text-white px-6 py-3 rounded-md border-2 border-white transition-all duration-300 hover:bg-gray-700 hover:scale-105 hover:shadow-[0_0_10px_#3b82f6]"
+            className="!px-2 !py-2 flex items-center gap-4 bg-white text-blue-500  rounded-md border-2 border-blue-300 transition-all duration-300 hover:bg-blue-50 hover:scale-105 hover:shadow-[0_0_10px_#60a5fa]"
           >
             <Github className="w-6 h-6" />
             GitHub
@@ -131,13 +148,13 @@ export default function ContactSection() {
                 "_blank"
               )
             }
-            className="flex items-center gap-4 bg-gray-800 text-white px-6 py-3 rounded-md border-2 border-white transition-all duration-300 hover:bg-gray-700 hover:scale-105 hover:shadow-[0_0_10px_#3b82f6]"
+            className="!mb-4 !px-2 !py-2 flex items-center gap-4 bg-white text-blue-500 rounded-md border-2 border-blue-300 transition-all duration-300 hover:bg-blue-50 hover:scale-105 hover:shadow-[0_0_10px_#60a5fa]"
           >
             <Linkedin className="w-6 h-6" />
             LinkedIn
           </button>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
