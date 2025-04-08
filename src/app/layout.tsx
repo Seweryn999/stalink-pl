@@ -58,6 +58,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pl">
       <head>
+        <meta
+          name="google-site-verification"
+          content="2xWegOH_A8Tmc_hAh4wmQ0jCdMXsVQrH7oas09BS2i8"
+        />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PDBTR9809D"
           strategy="afterInteractive"
