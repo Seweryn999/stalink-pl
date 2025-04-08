@@ -59,7 +59,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="pl">
       <head>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-Z0SVKR5R9W"
+          src="https://www.googletagmanager.com/gtag/js?id=G-PDBTR9809D"
           strategy="afterInteractive"
         />
         <Script
@@ -70,7 +70,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-Z0SVKR5R9W');
+              gtag('config', 'G-PDBTR9809D');
             `,
           }}
         />
