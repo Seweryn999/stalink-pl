@@ -24,7 +24,7 @@ const Text3DComponent: React.FC<Text3DProps> = ({
 
   useEffect(() => {
     if (textRef.current) {
-      const scaleFactor = isMobile ? 0.8 : 1.0; // Zwiększony scaleFactor dla mobile
+      const scaleFactor = isMobile ? 0.8 : 1.0;
       textRef.current.scale.set(scaleFactor, scaleFactor, scaleFactor);
     }
   }, [isMobile]);
@@ -42,8 +42,8 @@ const Text3DComponent: React.FC<Text3DProps> = ({
           <Text3D
             ref={textRef}
             font="/models/helvetiker_regular.typeface.json"
-            size={isMobile ? 1.2 : 1.0} // Zwiększony rozmiar dla mobile
-            height={isMobile ? 0.25 : 0.2} // Większa grubość dla mobile
+            size={isMobile ? 1.2 : 1.0}
+            height={isMobile ? 0.25 : 0.2}
             curveSegments={64}
             bevelEnabled
             bevelThickness={0.05}

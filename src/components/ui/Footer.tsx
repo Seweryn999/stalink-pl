@@ -5,9 +5,29 @@ import Link from "next/link";
 const Footer: React.FC = () => {
   return (
     <footer className="bg-white text-black py-6 border-t border-gray-200">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
-        <div className="text-sm mb-4 md:mb-0">
-          © {new Date().getFullYear()} Seweryn Stalinger. All rights reserved.
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-4 space-y-4 md:space-y-0">
+        <div className="flex flex-col md:flex-row items-center md:items-start space-y-2 md:space-y-0 md:space-x-6">
+          <div className="text-sm">
+            © {new Date().getFullYear()} Seweryn Stalinger. All rights reserved.
+          </div>
+          <div className="text-sm">
+            Email:{" "}
+            <a
+              href="mailto:seweryn.webdev@gmail.com"
+              className="hover:text-blue-500 transition"
+            >
+              seweryn.webdev@gmail.com
+            </a>
+          </div>
+          <div className="text-sm">
+            Phone:{" "}
+            <a
+              href="tel:+48531087939"
+              className="hover:text-blue-500 transition"
+            >
+              +48 531 087 939
+            </a>
+          </div>
         </div>
         <div className="flex space-x-6 items-center">
           <Link

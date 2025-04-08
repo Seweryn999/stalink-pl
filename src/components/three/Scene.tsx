@@ -11,7 +11,7 @@ const Scene: React.FC = () => {
 
   const updateDeviceType = () => {
     const width = window.innerWidth;
-    setIsMobile(width < 768); // Ustawienie breakpointu dla urządzeń mobilnych
+    setIsMobile(width < 768); 
   };
 
   useEffect(() => {

@@ -54,9 +54,9 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
       >
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-900">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-900">
           Nowoczesne strony internetowe i aplikacje webowe
-        </h2>
+        </h1>
       </motion.div>
 
       {/* Gradient przechodzący do białej sekcji */}

@@ -34,7 +34,6 @@ export default function Header() {
   return (
     <header className="bg-gradient-to-r from-[#d0dae8] via-[#b0c4de] to-[#a0b6d0] bg-opacity-90 backdrop-blur-lg w-full py-4 fixed top-0 left-0 z-50 shadow-lg transition-all duration-300">
       <div className="flex items-center justify-between px-6 lg:px-20 mx-auto w-full max-w-[1600px]">
-        {/* Logo */}
         <div className="text-[#1e3a5f] text-3xl font-bold tracking-widest uppercase transition-all duration-300">
           <Link href="/">Stalink</Link>
         </div>
@@ -42,7 +41,7 @@ export default function Header() {
         {/* Menu Button - Mobile */}
         <button
           aria-label="Toggle Menu"
-          className="md:hidden text-[#6ac6f1] focus:outline-none transition-all duration-300"
+          className="md:hidden text-white focus:outline-none transition-all duration-300"
           onClick={toggleMenu}
         >
           {state.isMenuOpen ? (
