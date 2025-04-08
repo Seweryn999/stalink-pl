@@ -6,6 +6,11 @@ import Header from "../../components/ui/Header";
 import Footer from "../../components/ui/Footer";
 import { motion } from "framer-motion";
 
+import BBHairSpaImage from "/public/images/bbhairspa.png";
+import TaskFlowImage from "/public/images/taskFlow.png";
+import ExpenseTrackerImage from "/public/images/expenseTracker.png";
+import FilmotekaImage from "/public/images/filmoteka.png";
+
 const fadeInVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
@@ -15,9 +20,9 @@ export default function ProjectsPage() {
   return (
     <>
       <Header />
-      {/* Projekty Komercyjne */}
       <section className="min-h-screen py-20 sm:py-32 lg:py-40 flex justify-center bg-gradient-to-br from-[#d0e7ff] to-[#a0b6d0] text-[#1e3a5f]">
         <div className="max-w-7xl w-full px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-y-16">
+          <link rel="icon" href="/logo.svg" />
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#a0b6d0] to-[#6ac6f1]">
             Projekty Komercyjne
           </h2>
@@ -33,10 +38,12 @@ export default function ProjectsPage() {
             >
               <div className="aspect-square relative w-full overflow-hidden rounded-t-xl">
                 <Image
-                  src="/images/bbhairspa.png"
+                  src={BBHairSpaImage}
                   alt="BB Hair Spa"
                   width={300}
                   height={300}
+                  placeholder="blur"
+                  priority
                   className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
@@ -89,7 +96,7 @@ export default function ProjectsPage() {
           </div>
         </div>
       </section>
-      (
+
       <section className="min-h-[120vh] py-40 flex justify-center items-center text-white bg-[#0e1624]">
         <div className="max-w-7xl w-full px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-y-16">
           <motion.h2
@@ -108,21 +115,21 @@ export default function ProjectsPage() {
                 title: "TaskFlow AI",
                 repoUrl: "https://github.com/Seweryn999/taskflow-ai",
                 liveUrl: "https://seweryn999.github.io/taskflow-ai/",
-                imageUrl: "/images/taskFlow.png",
+                image: TaskFlowImage,
               },
               {
                 title: "Finance Tracker",
                 repoUrl: "https://github.com/Seweryn999/expense-tracker-nextjs",
                 liveUrl:
                   "https://seweryn999.github.io/expense-tracker-nextjs/login",
-                imageUrl: "/images/expenseTracker.png",
+                image: ExpenseTrackerImage,
               },
               {
                 title: "Filmoteka-JS",
                 repoUrl:
                   "https://github.com/MartaAnetaSzymanska/Project-Filmoteka-JS",
                 liveUrl: "https://seweryn999.github.io/filmoteka-live/",
-                imageUrl: "/images/filmoteka.png",
+                image: FilmotekaImage,
               },
             ].map((project, index) => (
               <motion.div
@@ -136,10 +143,12 @@ export default function ProjectsPage() {
               >
                 <div className="aspect-square relative w-full overflow-hidden rounded-t-xl">
                   <Image
-                    src={project.imageUrl}
+                    src={project.image}
                     alt={project.title}
                     width={250}
                     height={250}
+                    placeholder="blur"
+                    priority
                     className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

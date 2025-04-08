@@ -4,6 +4,7 @@ import { Lock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import BBHairSpaImage from "/public/images/bbhairspa.png";
 
 export default function ProjectsSection() {
   const projects = [
@@ -11,7 +12,7 @@ export default function ProjectsSection() {
       title: "Hair Salon",
       description:
         "Strona salonu fryzjerskiego zbudowana w Next.js, responsywna i SEO-friendly.",
-      imgSrc: "/images/bbhairspa.png",
+      imgSrc: BBHairSpaImage,
       link: "/projekty",
     },
   ];
@@ -64,6 +65,8 @@ export default function ProjectsSection() {
                   width={500}
                   height={350}
                   className="object-cover w-full h-48 rounded-lg mb-4 group-hover:scale-105 transition-transform duration-300"
+                  placeholder="blur"
+                  priority
                 />
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">
                   {project.title}

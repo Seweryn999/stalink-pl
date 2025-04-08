@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import HeroImage from "/public/images/heroimg.png";
 
 const Scene = dynamic(() => import("../../components/three/Scene"), {
   ssr: false,
@@ -31,10 +33,19 @@ export default function HeroSection() {
   };
 
   return (
-    <section
-      className="relative w-full h-screen pt-16 overflow-hidden flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat m-0 p-0"
-      style={{ backgroundImage: "url('/images/heroimg.png')" }}
-    >
+    <section className="relative w-full h-screen pt-16 overflow-hidden flex flex-col items-center justify-center m-0 p-0">
+      {/* Tło obrazu */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={HeroImage}
+          alt="Hero Background"
+          layout="fill"
+          objectFit="cover"
+          placeholder="blur"
+          priority
+        />
+      </div>
+
       {/* Wyblakła warstwa */}
       <div className="absolute inset-0 bg-white opacity-60 pointer-events-none"></div>
 
@@ -49,7 +60,7 @@ export default function HeroSection() {
 
       {/* Opis technologii */}
       <motion.div
-        className="absolute top-2/3 text-center"
+        className="absolute top-2/3 text-center z-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
@@ -60,10 +71,10 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Gradient przechodzący do białej sekcji */}
-      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-white"></div>
+      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-white z-10"></div>
 
       {/* Strzałka */}
-      <div className="absolute bottom-8 flex justify-center">
+      <div className="absolute bottom-8 flex justify-center z-10">
         <button onClick={scrollToNextSection} aria-label="Przejdź niżej">
           <ChevronDown className="w-10 h-10 animate-bounce cursor-pointer text-blue-900" />
         </button>

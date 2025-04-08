@@ -4,6 +4,9 @@ import Header from "../../components/ui/Header";
 import Footer from "../../components/ui/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Script from "next/script";
+
+import Seweryn1Image from "/public/images/seweryn1.jpg";
 
 const fadeInVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -13,9 +16,37 @@ const fadeInVariants = {
 export default function AboutPage() {
   return (
     <>
+      <Script
+        id="ld-json-person"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Seweryn Stalinger",
+            url: "https://twojadomena.pl/o-mnie",
+            image: "https://twojadomena.pl/images/seweryn1.jpg",
+            jobTitle: "Frontend Developer",
+            worksFor: {
+              "@type": "Organization",
+              name: "STALINK",
+              url: "https://twojadomena.pl",
+            },
+            sameAs: [],
+            alumniOf: {
+              "@type": "CollegeOrUniversity",
+              name: "Informatyka – studia",
+            },
+            description:
+              "Frontend developer specjalizujący się w Next.js, React, TypeScript i Tailwind CSS. Tworzy szybkie, estetyczne i skuteczne strony internetowe.",
+          }),
+        }}
+      />
       <Header />
       <section className="min-h-screen py-20 sm:py-32 lg:py-40 flex justify-center bg-gradient-to-br from-white via-blue-100 to-blue-200">
         <div className="max-w-6xl w-full px-6 sm:px-8 lg:px-10 flex flex-col items-center gap-y-16">
+          <link rel="icon" href="/logo.svg" />
           <motion.h1
             className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-widest text-gray-800 mb-12 text-center"
             variants={fadeInVariants}
@@ -35,11 +66,13 @@ export default function AboutPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <Image
-                src="/images/seweryn1.jpg"
+                src={Seweryn1Image}
                 alt="Seweryn Stalinger"
                 width={400}
                 height={400}
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                placeholder="blur"
+                priority
               />
             </motion.div>
 

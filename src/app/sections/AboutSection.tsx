@@ -2,7 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import SewerynImg from "/public/images/seweryn.jpg";
 
 export default function AboutSection() {
   const [isImageOpen, setIsImageOpen] = useState(false);
@@ -35,10 +37,14 @@ export default function AboutSection() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <img
-                src="/images/seweryn.jpg"
+              <Image
+                src={SewerynImg}
                 alt="Seweryn Stalinger"
-                className="w-full h-full object-cover"
+                width={288}
+                height={288}
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aH..."
+                priority
               />
             </motion.div>
           </div>
@@ -89,9 +95,11 @@ export default function AboutSection() {
             onClick={handleCloseModal}
           >
             <div className="relative max-w-3xl w-full p-4">
-              <img
+              <Image
                 src="/images/seweryn.jpg"
                 alt="Seweryn Stalinger - pełny rozmiar"
+                width={800}
+                height={800}
                 className="w-full h-auto object-contain rounded-lg shadow-lg"
               />
               <button
