@@ -22,7 +22,7 @@ export const metadata = {
   ],
   metadataBase: new URL("https://stalink.pl"),
   openGraph: {
-    title: "STALINK – Nowoczesne strony internetowe",
+    title: "Stalink",
     description:
       "Zobacz, jak nowoczesna technologia i estetyczny design mogą zwiększyć sprzedaż Twojej firmy.",
     url: "https://stalink.pl",

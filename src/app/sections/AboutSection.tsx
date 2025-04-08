@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import SewerynImg from "/public/images/seweryn.jpg";
 
 export default function AboutSection() {
   const [isImageOpen, setIsImageOpen] = useState(false);
@@ -38,12 +37,12 @@ export default function AboutSection() {
               viewport={{ once: true }}
             >
               <Image
-                src={SewerynImg}
+                src="/images/seweryn.jpg"
                 alt="Seweryn Stalinger"
                 width={288}
                 height={288}
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aH..."
+                className="object-cover w-full h-full"
+                placeholder="empty"
                 priority
               />
             </motion.div>

@@ -6,10 +6,10 @@ import Header from "../../components/ui/Header";
 import Footer from "../../components/ui/Footer";
 import { motion } from "framer-motion";
 
-import BBHairSpaImage from "/public/images/bbhairspa.png";
-import TaskFlowImage from "/public/images/taskFlow.png";
-import ExpenseTrackerImage from "/public/images/expenseTracker.png";
-import FilmotekaImage from "/public/images/filmoteka.png";
+const BBHairSpaImage = "/images/bbhairspa.png";
+const TaskFlowImage = "/images/taskflow.png";
+const ExpenseTrackerImage = "/images/expenseTracker.png";
+const FilmotekaImage = "/images/filmoteka.png";
 
 const fadeInVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -42,7 +42,7 @@ export default function ProjectsPage() {
                   alt="BB Hair Spa"
                   width={300}
                   height={300}
-                  placeholder="blur"
+                  placeholder="empty"
                   priority
                   className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                 />
@@ -147,9 +147,9 @@ export default function ProjectsPage() {
                     alt={project.title}
                     width={250}
                     height={250}
-                    placeholder="blur"
-                    priority
                     className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                    placeholder="empty"
+                    priority
                   />
                 </div>
                 <div className="relative p-4 flex flex-col items-center rounded-b-xl">

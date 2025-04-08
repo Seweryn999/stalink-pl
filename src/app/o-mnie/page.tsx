@@ -6,8 +6,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Script from "next/script";
 
-import Seweryn1Image from "/public/images/seweryn1.jpg";
-
 const fadeInVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
@@ -16,6 +14,7 @@ const fadeInVariants = {
 export default function AboutPage() {
   return (
     <>
+      {/* Schema.org – Person */}
       <Script
         id="ld-json-person"
         type="application/ld+json"
@@ -66,12 +65,12 @@ export default function AboutPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <Image
-                src={Seweryn1Image}
+                src="/images/seweryn1.jpg"
                 alt="Seweryn Stalinger"
                 width={400}
                 height={400}
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
-                placeholder="blur"
+                placeholder="empty"
                 priority
               />
             </motion.div>
@@ -120,37 +119,30 @@ export default function AboutPage() {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "Next.js",
-                  description:
+              {[...["Next.js", "TypeScript", "Tailwind CSS"]].map(
+                (title, index) => {
+                  const descriptions = [
                     "Strony stworzone z Next.js ładują się błyskawicznie dzięki zaawansowanym technikom optymalizacji. To oznacza lepsze pozycjonowanie w Google i więcej klientów na Twojej stronie.",
-                },
-                {
-                  title: "TypeScript",
-                  description:
                     "TypeScript gwarantuje bezbłędne działanie strony i jej stabilność. Klienci widzą profesjonalizm i jakość, co buduje ich zaufanie i zwiększa szanse na sprzedaż.",
-                },
-                {
-                  title: "Tailwind CSS",
-                  description:
                     "Dzięki Tailwind CSS Twoja strona jest estetyczna, nowoczesna i w pełni responsywna. Piękny design przyciąga uwagę i skłania do zakupów.",
-                },
-              ].map((tech, index) => (
-                <motion.div
-                  key={index}
-                  className="group relative border border-blue-300 rounded-xl p-6 shadow transition-transform transform hover:scale-105 hover:border-blue-600 bg-white"
-                  variants={fadeInVariants}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ duration: 0.8, delay: 0.8 + index * 0.2 }}
-                >
-                  <h3 className="text-xl font-bold text-gray-800 mb-3">
-                    {tech.title}
-                  </h3>
-                  <p className="text-gray-700">{tech.description}</p>
-                </motion.div>
-              ))}
+                  ];
+                  return (
+                    <motion.div
+                      key={index}
+                      className="group relative border border-blue-300 rounded-xl p-6 shadow transition-transform transform hover:scale-105 hover:border-blue-600 bg-white"
+                      variants={fadeInVariants}
+                      initial="hidden"
+                      animate="visible"
+                      transition={{ duration: 0.8, delay: 0.8 + index * 0.2 }}
+                    >
+                      <h3 className="text-xl font-bold text-gray-800 mb-3">
+                        {title}
+                      </h3>
+                      <p className="text-gray-700">{descriptions[index]}</p>
+                    </motion.div>
+                  );
+                }
+              )}
             </div>
           </motion.div>
         </div>

@@ -5,7 +5,6 @@ import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import HeroImage from "/public/images/heroimg.png";
 
 const Scene = dynamic(() => import("../../components/three/Scene"), {
   ssr: false,
@@ -37,11 +36,10 @@ export default function HeroSection() {
       {/* Tło obrazu */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={HeroImage}
+          src="/images/heroimg.png"
           alt="Hero Background"
-          layout="fill"
-          objectFit="cover"
-          placeholder="blur"
+          fill
+          className="object-cover"
           priority
         />
       </div>
