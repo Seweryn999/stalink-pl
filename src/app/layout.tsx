@@ -20,12 +20,12 @@ export const metadata = {
     "Web Developer",
     "Stalink",
   ],
-  metadataBase: new URL("https://twojadomena.pl"),
+  metadataBase: new URL("https://stalink.pl"),
   openGraph: {
     title: "STALINK – Nowoczesne strony internetowe",
     description:
       "Zobacz, jak nowoczesna technologia i estetyczny design mogą zwiększyć sprzedaż Twojej firmy.",
-    url: "https://twojadomena.pl",
+    url: "https://stalink.pl",
     siteName: "STALINK",
     images: [
       {
