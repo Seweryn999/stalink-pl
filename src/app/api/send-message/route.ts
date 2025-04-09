@@ -4,12 +4,23 @@ import { collection, addDoc } from "firebase/firestore";
 import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getMessaging } from "firebase-admin/messaging";
 
+// Sprawdzenie zmiennych środowiskowych
+if (!process.env.FIREBASE_PROJECT_ID) {
+  throw new Error("Brak zmiennej środowiskowej FIREBASE_PROJECT_ID");
+}
+if (!process.env.FIREBASE_PRIVATE_KEY) {
+  throw new Error("Brak zmiennej środowiskowej FIREBASE_PRIVATE_KEY");
+}
+if (!process.env.FIREBASE_CLIENT_EMAIL) {
+  throw new Error("Brak zmiennej środowiskowej FIREBASE_CLIENT_EMAIL");
+}
+
 // Inicjalizacja Firebase Admin SDK
 if (!getApps().length) {
   initializeApp({
     credential: cert({
       projectId: process.env.FIREBASE_PROJECT_ID,
-      // privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+      privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
       clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
     }),
   });
