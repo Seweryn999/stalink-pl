@@ -27,7 +27,9 @@ if (!getApps().length) {
 
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json();
+    const body = await request.json(); // <--- dodaj to!
+
+    const { name, email, message, fcmToken } = body;
 
     // Walidacja danych
     if (!name || typeof name !== "string" || name.trim().length < 2) {
@@ -49,7 +51,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Zapis do Firestore za pomocą admin SDK
     const db = getFirestore();
     const docRef = await db.collection("messages").add({
       name: name.trim(),
@@ -58,19 +59,17 @@ export async function POST(request: Request) {
       timestamp: new Date(),
     });
 
-    // Wysłanie powiadomienia FCM (opcjonalne)
-    const fcmToken = "TWÓJ_TOKEN_FCM"; // Zastąp prawdziwym tokenem
-    const notification = {
-      notification: {
-        title: "Nowa wiadomość!",
-        body: `Od: ${name.trim()} (${email.trim()}) - ${message
-          .trim()
-          .substring(0, 50)}...`,
-      },
-      token: fcmToken,
-    };
+    if (fcmToken) {
+      const notification = {
+        notification: {
+          title: "Nowa wiadomość!",
+          body: `Od: ${name} (${email}) - ${message.substring(0, 50)}...`,
+        },
+        token: fcmToken,
+      };
 
-    await getMessaging().send(notification);
+      await getMessaging().send(notification);
+    }
 
     return NextResponse.json({ id: docRef.id }, { status: 200 });
   } catch (error: any) {

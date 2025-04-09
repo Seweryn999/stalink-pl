@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { Github, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
+import { requestForToken } from "@/lib/firebaseClient"; // <-- Dodane
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -10,9 +11,20 @@ export default function ContactSection() {
     email: "",
     message: "",
   });
+  const [fcmToken, setFcmToken] = useState<string | null>(null); // <-- Dodane
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Pobierz token FCM po stronie klienta
+    requestForToken().then((token) => {
+      if (token) {
+        setFcmToken(token);
+        console.log("Token FCM ustawiony:", token);
+      }
+    });
+  }, []);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -36,7 +48,6 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Formularz przesłany, rozpoczynanie wysyłania...");
     setLoading(true);
     setError(null);
 
@@ -48,13 +59,17 @@ export default function ContactSection() {
     }
 
     try {
-      console.log("Wysyłanie danych do API:", formData);
+      const dataToSend = {
+        ...formData,
+        fcmToken, // <-- Dołączamy token FCM do danych wysyłanych do API
+      };
+
       const response = await fetch("/api/send-message", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSend),
       });
 
       if (!response.ok) {
@@ -73,7 +88,6 @@ export default function ContactSection() {
           "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie."
       );
     } finally {
-      console.log("Zakończono wysyłanie");
       setLoading(false);
     }
   };
@@ -88,7 +102,6 @@ export default function ContactSection() {
       viewport={{ once: true }}
     >
       <div className="w-full max-w-5xl flex flex-col md:flex-row items-center justify-center gap-12 mx-auto">
-        {/* Formularz */}
         <motion.div
           className="w-full md:w-2/3"
           initial={{ opacity: 0, x: -50 }}
@@ -164,7 +177,6 @@ export default function ContactSection() {
           )}
         </motion.div>
 
-        {/* Linki do social media */}
         <motion.div
           className="flex flex-col items-center md:items-start gap-6 self-center md:self-auto mt-8 md:mt-0"
           initial={{ opacity: 0, x: 50 }}

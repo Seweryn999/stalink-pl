@@ -1,5 +1,6 @@
+// lib/firebaseClient.ts
 import { initializeApp, getApps } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -13,4 +14,30 @@ const firebaseConfig = {
 
 const app =
   getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
-export const db = getFirestore(app);
+
+export const messaging = getMessaging(app);
+
+export const requestForToken = async () => {
+  try {
+    const currentToken = await getToken(messaging, {
+      vapidKey: process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY,
+    });
+    if (currentToken) {
+      console.log("✅ Token FCM:", currentToken);
+      return currentToken;
+    } else {
+      console.warn(
+        "⚠️ Token FCM nie został uzyskany. Poproś użytkownika o zgodę."
+      );
+    }
+  } catch (err) {
+    console.error("Błąd pobierania tokena FCM:", err);
+  }
+};
+
+export const onMessageListener = () =>
+  new Promise((resolve) => {
+    onMessage(messaging, (payload) => {
+      resolve(payload);
+    });
+  });
