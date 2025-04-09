@@ -9,7 +9,7 @@ import {
 let messaging: Messaging | null = null;
 
 export const initFirebase = () => {
-  if (typeof window === "undefined") return; // ⛔ SSR guard
+  if (typeof window === "undefined") return;
 
   if (!getApps().length) {
     const firebaseConfig = {

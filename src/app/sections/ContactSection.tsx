@@ -26,7 +26,7 @@ export default function ContactSection() {
     if (typeof window === "undefined") return;
 
     const init = async () => {
-      initFirebase(); // najpierw inicjalizacja Firebase app
+      initFirebase();
       const token = await requestForToken();
       if (token) {
         setFcmToken(token);
@@ -105,13 +105,16 @@ export default function ContactSection() {
       setSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
 
-      toast("Nowa wiadomość!", {
-        description: "Kliknij, by sprawdzić skrzynkę.",
-        action: {
-          label: "Zobacz",
-          onClick: () => (window.location.href = "/panel"),
-        },
-      });
+      toast(
+        "Odpowiem w ciągu godziny:)"
+        //   {
+        //   description: "Kliknij, by sprawdzić skrzynkę.",
+        //   action: {
+        //     label: "Zobacz",
+        //     onClick: () => (window.location.href = "/panel"),
+        //   },
+        // }
+      );
     } catch (error: any) {
       console.error("Błąd podczas wysyłania wiadomości:", error);
       setError(

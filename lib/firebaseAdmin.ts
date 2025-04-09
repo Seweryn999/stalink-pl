@@ -1,7 +1,6 @@
 import { cert, getApps, initializeApp, App } from "firebase-admin/app";
 import { getFirestore, Firestore } from "firebase-admin/firestore";
 
-// ✅ Walidacja zmiennych środowiskowych
 const { FIREBASE_PROJECT_ID, FIREBASE_PRIVATE_KEY, FIREBASE_CLIENT_EMAIL } =
   process.env;
 
@@ -11,7 +10,6 @@ if (!FIREBASE_PROJECT_ID || !FIREBASE_PRIVATE_KEY || !FIREBASE_CLIENT_EMAIL) {
   );
 }
 
-// ✅ Inicjalizacja lub użycie istniejącej instancji
 const adminApp: App =
   getApps().length === 0
     ? initializeApp({
@@ -23,5 +21,4 @@ const adminApp: App =
       })
     : getApps()[0];
 
-// ✅ Eksport bazy danych Firestore
 export const adminDb: Firestore = getFirestore(adminApp);

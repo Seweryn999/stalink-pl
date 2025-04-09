@@ -45,9 +45,18 @@ export async function POST(request: Request) {
       });
     }
 
+    await adminDb.collection("mail").add({
+      to: ["seweryn.webdev@gmail.com"],
+      message: {
+        subject: `Nowa wiadomość od ${name}`,
+        text: `Od: ${name} <${email}>\n\n${message}`,
+        html: `<p><strong>Od:</strong> ${name} (${email})</p><p>${message}</p>`,
+      },
+    });
+
     return NextResponse.json({ id: docRef.id }, { status: 200 });
   } catch (error: any) {
-    console.error("❌ Błąd podczas zapisu lub wysyłania powiadomienia:", error);
+    console.error("❌ Błąd podczas zapisu, powiadomienia lub maila:", error);
     return NextResponse.json(
       { error: "Wystąpił błąd serwera. Spróbuj ponownie później." },
       { status: 500 }
