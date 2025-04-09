@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
-import { db } from "../../../../lib/firebaseConfig";
-import { collection, addDoc } from "firebase/firestore";
 import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getMessaging } from "firebase-admin/messaging";
+import { getFirestore } from "firebase-admin/firestore";
 
 // Sprawdzenie zmiennych środowiskowych
 if (!process.env.FIREBASE_PROJECT_ID) {
@@ -15,7 +14,7 @@ if (!process.env.FIREBASE_CLIENT_EMAIL) {
   throw new Error("Brak zmiennej środowiskowej FIREBASE_CLIENT_EMAIL");
 }
 
-// Inicjalizacja Firebase Admin SDK
+// Inicjalizacja Firebase Admin SDK (tylko raz)
 if (!getApps().length) {
   initializeApp({
     credential: cert({
@@ -50,16 +49,17 @@ export async function POST(request: Request) {
       );
     }
 
-    // Zapis do Firestore
-    const docRef = await addDoc(collection(db, "messages"), {
+    // Zapis do Firestore za pomocą admin SDK
+    const db = getFirestore();
+    const docRef = await db.collection("messages").add({
       name: name.trim(),
       email: email.trim(),
       message: message.trim(),
       timestamp: new Date(),
     });
 
-    // Wysłanie powiadomienia FCM
-    const fcmToken = "TWÓJ_TOKEN_FCM"; // Wstaw swój token FCM (pobierz go z przeglądarki)
+    // Wysłanie powiadomienia FCM (opcjonalne)
+    const fcmToken = "TWÓJ_TOKEN_FCM"; // Zastąp prawdziwym tokenem
     const notification = {
       notification: {
         title: "Nowa wiadomość!",
