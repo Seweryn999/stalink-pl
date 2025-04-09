@@ -1,10 +1,14 @@
+import dynamic from "next/dynamic"; // <--- dodaj
 import Header from "../components/ui/Header";
 import HeroSection from "./sections/HeroSection";
 import AboutSection from "./sections/AboutSection";
 import ProjectsSection from "./sections/ProjectsSection";
-import ContactSection from "./sections/ContactSection";
 import Footer from "../components/ui/Footer";
 import Script from "next/script";
+
+const ContactSection = dynamic(() => import("./sections/ContactSection"), {
+  ssr: false,
+});
 
 export const metadata = {
   title: "Stalink",
@@ -54,7 +58,7 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <ProjectsSection />
-        <ContactSection />
+        <ContactSection /> {/* ← już bez SSR */}
         <Footer />
       </main>
     </>

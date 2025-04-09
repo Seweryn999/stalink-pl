@@ -14,7 +14,6 @@ if (!process.env.FIREBASE_CLIENT_EMAIL) {
   throw new Error("Brak zmiennej środowiskowej FIREBASE_CLIENT_EMAIL");
 }
 
-// Inicjalizacja Firebase Admin SDK (tylko raz)
 if (!getApps().length) {
   initializeApp({
     credential: cert({
