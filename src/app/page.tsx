@@ -7,7 +7,7 @@ import Footer from "../components/ui/Footer";
 import Script from "next/script";
 
 export const metadata = {
-  title: "STALINK – Nowoczesne strony internetowe",
+  title: "Stalink",
   description:
     "Nowoczesne, estetyczne i szybkie strony internetowe budowane z wykorzystaniem Next.js, React, TypeScript i Tailwind CSS.",
 };
@@ -24,8 +24,8 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "STALINK",
-            url: "https://twojadomena.pl",
-            logo: "https://twojadomena.pl/logo.svg",
+            url: "https://stalink.pl",
+            logo: "https://stalink.pl/logo.svg",
             sameAs: [],
           }),
         }}
@@ -39,10 +39,10 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "WebSite",
             name: "STALINK",
-            url: "https://twojadomena.pl",
+            url: "https://stalink.pl",
             potentialAction: {
               "@type": "SearchAction",
-              target: "https://twojadomena.pl/?q={search_term_string}",
+              target: "https://stalink.pl/?q={search_term_string}",
               "query-input": "required name=search_term_string",
             },
           }),

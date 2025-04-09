@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, ChangeEvent, FormEvent } from "react";
-import { db } from "../../../lib/firebaseConfig";
-import { collection, addDoc } from "firebase/firestore";
 import { Github, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -14,6 +12,7 @@ export default function ContactSection() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -22,22 +21,59 @@ export default function ContactSection() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const validateForm = () => {
+    if (!formData.name || formData.name.trim().length < 2) {
+      return "Imię jest wymagane i musi mieć co najmniej 2 znaki";
+    }
+    if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      return "Podaj poprawny adres email";
+    }
+    if (!formData.message || formData.message.trim().length < 5) {
+      return "Wiadomość jest wymagana i musi mieć co najmniej 5 znaków";
+    }
+    return null;
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log("Formularz przesłany, rozpoczynanie wysyłania...");
     setLoading(true);
+    setError(null);
+
+    const validationError = validateForm();
+    if (validationError) {
+      setError(validationError);
+      setLoading(false);
+      return;
+    }
 
     try {
-      await addDoc(collection(db, "messages"), {
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-        timestamp: new Date(),
+      console.log("Wysyłanie danych do API:", formData);
+      const response = await fetch("/api/send-message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Błąd podczas wysyłania wiadomości");
+      }
+
+      const result = await response.json();
+      console.log("Wiadomość zapisana z ID:", result.id);
       setSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      console.error("Błąd podczas wysyłania wiadomości: ", error);
+    } catch (error: any) {
+      console.error("Błąd podczas wysyłania wiadomości:", error);
+      setError(
+        error.message ||
+          "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie."
+      );
     } finally {
+      console.log("Zakończono wysyłanie");
       setLoading(false);
     }
   };
@@ -60,7 +96,7 @@ export default function ContactSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <h2 className="!mb-3 text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-widest text-gray-800  text-center md:text-left">
+          <h2 className="!mb-3 text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-widest text-gray-800 text-center md:text-left">
             Skontaktuj się
           </h2>
 
@@ -70,6 +106,11 @@ export default function ContactSection() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-8">
+              {error && (
+                <div className="text-center text-red-600 text-xl font-medium">
+                  {error}
+                </div>
+              )}
               <div className="relative group">
                 <input
                   type="text"
@@ -135,7 +176,7 @@ export default function ContactSection() {
             onClick={() =>
               window.open("https://github.com/Seweryn999", "_blank")
             }
-            className="!px-2 !py-2 flex items-center gap-4 bg-white text-blue-500  rounded-md border-2 border-blue-300 transition-all duration-300 hover:bg-blue-50 hover:scale-105 hover:shadow-[0_0_10px_#60a5fa]"
+            className="!px-2 !py-2 flex items-center gap-4 bg-white text-blue-500 rounded-md border-2 border-blue-300 transition-all duration-300 hover:bg-blue-50 hover:scale-105 hover:shadow-[0_0_10px_#60a5fa]"
           >
             <Github className="w-6 h-6" />
             GitHub

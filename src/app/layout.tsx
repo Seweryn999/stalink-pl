@@ -5,7 +5,7 @@ import Script from "next/script";
 
 export const metadata = {
   title: {
-    default: "STALINK – Nowoczesne strony internetowe",
+    default: "Stalink",
     template: "%s | STALINK",
   },
   description:
@@ -32,14 +32,14 @@ export const metadata = {
         url: "/images/heroimg.png",
         width: 1200,
         height: 630,
-        alt: "STALINK - nowoczesne strony internetowe",
+        alt: "Stalink",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "STALINK – Nowoczesne strony internetowe",
+    title: "Stalink",
     description:
       "Tworzymy nowoczesne i zoptymalizowane strony www, które przyciągają klientów.",
     images: ["/images/heroimg.png"],
@@ -60,10 +60,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <meta
           name="google-site-verification"
-          content="2xWegOH_A8Tmc_hAh4wmQ0jCdMXsVQrH7oas09BS2i8"
+          content={process.env.GOOGLE_SITE_VERIFICATION}
         />
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-PDBTR9809D"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`}
           strategy="afterInteractive"
         />
         <Script
@@ -74,7 +74,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-PDBTR9809D');
+              gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}');
             `,
           }}
         />
