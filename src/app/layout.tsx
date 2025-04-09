@@ -2,6 +2,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata = {
   title: {
@@ -81,6 +82,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="w-full relative text-gray-800 overflow-x-hidden min-h-screen bg-gradient-to-br from-[#e1effb] via-[#d0e7f9] to-[#f0f7ff]">
         <Analytics />
+        <Toaster />
         <div className="relative z-10 w-full">{children}</div>
       </body>
     </html>

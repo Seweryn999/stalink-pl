@@ -3,7 +3,13 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { Github, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
-import { requestForToken } from "@/lib/firebaseClient"; // <-- Dodane
+import {
+  initFirebase,
+  requestForToken,
+  onMessageListener,
+} from "@/lib/firebaseClient";
+
+import { toast } from "sonner";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -11,19 +17,36 @@ export default function ContactSection() {
     email: "",
     message: "",
   });
-  const [fcmToken, setFcmToken] = useState<string | null>(null); // <-- Dodane
+  const [fcmToken, setFcmToken] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Pobierz token FCM po stronie klienta
-    requestForToken().then((token) => {
+    if (typeof window === "undefined") return;
+
+    const init = async () => {
+      initFirebase(); // najpierw inicjalizacja Firebase app
+      const token = await requestForToken();
       if (token) {
         setFcmToken(token);
         console.log("Token FCM ustawiony:", token);
       }
+    };
+
+    init();
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = onMessageListener().then((payload: any) => {
+      console.log("📩 Otrzymano wiadomość push:", payload);
+
+      toast(payload.notification?.title || "Nowa wiadomość!", {
+        description: payload.notification?.body || "",
+      });
     });
+
+    return () => {};
   }, []);
 
   const handleChange = (
@@ -61,7 +84,7 @@ export default function ContactSection() {
     try {
       const dataToSend = {
         ...formData,
-        fcmToken, // <-- Dołączamy token FCM do danych wysyłanych do API
+        fcmToken,
       };
 
       const response = await fetch("/api/send-message", {
@@ -81,6 +104,14 @@ export default function ContactSection() {
       console.log("Wiadomość zapisana z ID:", result.id);
       setSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
+
+      toast("Nowa wiadomość!", {
+        description: "Kliknij, by sprawdzić skrzynkę.",
+        action: {
+          label: "Zobacz",
+          onClick: () => (window.location.href = "/panel"),
+        },
+      });
     } catch (error: any) {
       console.error("Błąd podczas wysyłania wiadomości:", error);
       setError(

@@ -1,25 +1,27 @@
-import { cert, getApps, initializeApp } from "firebase-admin/app";
-import { getFirestore } from "firebase-admin/firestore";
+import { cert, getApps, initializeApp, App } from "firebase-admin/app";
+import { getFirestore, Firestore } from "firebase-admin/firestore";
 
-if (
-  !process.env.FIREBASE_PROJECT_ID ||
-  !process.env.FIREBASE_PRIVATE_KEY ||
-  !process.env.FIREBASE_CLIENT_EMAIL
-) {
+// ✅ Walidacja zmiennych środowiskowych
+const { FIREBASE_PROJECT_ID, FIREBASE_PRIVATE_KEY, FIREBASE_CLIENT_EMAIL } =
+  process.env;
+
+if (!FIREBASE_PROJECT_ID || !FIREBASE_PRIVATE_KEY || !FIREBASE_CLIENT_EMAIL) {
   throw new Error(
-    "Brakuje zmiennych środowiskowych do konfiguracji Firebase Admin"
+    "Brakuje wymaganych zmiennych środowiskowych do Firebase Admin"
   );
 }
 
-const app =
+// ✅ Inicjalizacja lub użycie istniejącej instancji
+const adminApp: App =
   getApps().length === 0
     ? initializeApp({
         credential: cert({
-          projectId: process.env.FIREBASE_PROJECT_ID,
-          privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
-          clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+          projectId: FIREBASE_PROJECT_ID,
+          privateKey: FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+          clientEmail: FIREBASE_CLIENT_EMAIL,
         }),
       })
     : getApps()[0];
 
-export const adminDb = getFirestore(app);
+// ✅ Eksport bazy danych Firestore
+export const adminDb: Firestore = getFirestore(adminApp);
