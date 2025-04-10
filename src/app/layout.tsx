@@ -79,6 +79,22 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             `,
           }}
         />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script
+          id="ga4-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}');
+    `,
+          }}
+        />
       </head>
       <body className="w-full relative text-gray-800 overflow-x-hidden min-h-screen bg-gradient-to-br from-[#e1effb] via-[#d0e7f9] to-[#f0f7ff]">
         <Analytics />
