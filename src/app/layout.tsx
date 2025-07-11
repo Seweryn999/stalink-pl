@@ -106,7 +106,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 v.onload = function () {
                   if (window.voiceflow?.chat?.load) {
                     window.voiceflow.chat.load({
-                      verify: { projectID: "686d0a5b487dac4ee25c3052" },
+                      verify: { projectID: "686e3f5fb79c3cad291cb4bf" },
                       url: "https://general-runtime.voiceflow.com",
                       versionID: "production",
                       voice: {
