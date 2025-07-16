@@ -63,7 +63,7 @@ export default function AiServicesSection() {
     >
       <Header />
 
-      <div className="flex-grow max-w-6xl mx-auto px-4 py-12">
+      <div className="flex-grow max-w-6xl mx-auto px-4 pt-32 pb-12">
         {/* Nagłówek i wprowadzenie */}
         <motion.h2
           className="text-4xl md:text-5xl font-extrabold text-center text-blue-800 mb-6"
