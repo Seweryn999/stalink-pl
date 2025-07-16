@@ -55,7 +55,7 @@ export default function AiServicesSection() {
   return (
     <motion.section
       id="automatyzacja-ai"
-      className="py-24 bg-gradient-to-b from-blue-50 to-blue-100"
+      className="flex flex-col min-h-screen bg-gradient-to-b from-blue-50 to-blue-100"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -63,7 +63,7 @@ export default function AiServicesSection() {
     >
       <Header />
 
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="flex-grow max-w-6xl mx-auto px-4 py-12">
         {/* Nagłówek i wprowadzenie */}
         <motion.h2
           className="text-4xl md:text-5xl font-extrabold text-center text-blue-800 mb-6"
@@ -83,7 +83,7 @@ export default function AiServicesSection() {
 
         {/* Karty usług */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-10"
+          className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16"
           variants={containerVariants}
         >
           {services.map((svc) => (
@@ -113,7 +113,7 @@ export default function AiServicesSection() {
               </ul>
               <a
                 href="#kontakt"
-                className="mt-auto px-6 py-3 bg-teal-500 text-white font-semibold rounded-full transition-all hover:bg-teal-600"
+                className="mt-auto px-6 py-3 bg-blue-500 text-white font-semibold rounded-full transition-all hover:bg-blue-600"
               >
                 Skontaktuj się
               </a>
@@ -123,7 +123,7 @@ export default function AiServicesSection() {
 
         {/* Sekcja „Dlaczego automatyzacja?” */}
         <motion.div
-          className="mt-16 bg-white/50 backdrop-blur-lg rounded-2xl p-8"
+          className="bg-white/50 backdrop-blur-lg rounded-2xl p-8 mb-16"
           variants={itemVariants}
         >
           <h3 className="text-3xl font-bold text-center text-blue-800 mb-4">
@@ -154,10 +154,10 @@ export default function AiServicesSection() {
         </motion.div>
 
         {/* CTA końcowe */}
-        <motion.div className="mt-12 text-center" variants={itemVariants}>
+        <motion.div className="text-center mb-12" variants={itemVariants}>
           <a
             href="/kontakt"
-            className="inline-block px-8 py-4 bg-teal-500 text-white font-bold rounded-full text-lg transition-all hover:bg-teal-600"
+            className="inline-block px-8 py-4 bg-blue-500 text-white font-bold rounded-full text-lg transition-all hover:bg-blue-600"
           >
             Umów bezpłatną konsultację
           </a>
