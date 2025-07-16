@@ -1,6 +1,6 @@
 // src/app/page.tsx
 
-import HomeClient from "./HomeClient"; // nie dynamic, tylko zwykły import
+import HomeClient from "./HomeClient";
 
 export const metadata = {
   title: "Stalink",
