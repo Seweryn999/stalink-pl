@@ -61,14 +61,13 @@ export default function AiServicesSection() {
   return (
     <>
       <Header />
-      <div className="h-24 md:h-32" />
       <motion.section
-        id="automatyzacja-ai"
-        className="relative pt-[200px] md:pt-[240px] bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen py-12"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={containerVariants}
+        id="contact"
+        className="min-h-screen bg-gradient-to-br from-white via-blue-100 to-blue-200 flex items-center justify-center px-4 py-20"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
       >
         <div className="flex-grow flex flex-col justify-center max-w-6xl mx-auto px-4 space-y-12">
           <motion.div className="text-center" variants={itemVariants}>
