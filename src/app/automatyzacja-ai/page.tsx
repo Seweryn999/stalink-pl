@@ -42,7 +42,6 @@ export default function AiServicesSection() {
     },
   ];
 
-  // 🔷 TU JEST POPRAWKA
   const containerVariants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.2 } },
@@ -158,7 +157,8 @@ export default function AiServicesSection() {
         </div>
       </section>
 
-      <section className="bg-blue-500/90 py-16">
+      {/* 🔷 Gradient premium */}
+      <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 pt-32 md:pt-40 pb-16">
         <div className="max-w-4xl mx-auto px-4 text-center text-white space-y-6">
           <h3 className="text-3xl font-bold">Zacznij automatyzować już dziś</h3>
           <p className="text-lg">
