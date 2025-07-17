@@ -4,8 +4,21 @@ import Image from "next/image";
 import Header from "../../components/ui/Header";
 import Footer from "../../components/ui/Footer";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function AiServicesSection() {
+  const [chatReady, setChatReady] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (typeof window !== "undefined" && window.voiceflow?.chat?.open) {
+        setChatReady(true);
+        clearInterval(interval);
+      }
+    }, 500);
+    return () => clearInterval(interval);
+  }, []);
+
   const services = [
     {
       title: "Chatbot",
@@ -53,11 +66,10 @@ export default function AiServicesSection() {
   };
 
   const handleOpenChat = () => {
-    if (typeof window !== "undefined" && window.voiceflow?.chat?.open) {
+    if (chatReady) {
       window.voiceflow.chat.open();
     } else {
-      alert("Chat nie jest jeszcze gotowy. Spróbuj za kilka sekund.");
-      console.warn("Voiceflow chat not ready yet.");
+      alert("Chat nie jest jeszcze gotowy. Spróbuj za chwilę.");
     }
   };
 
@@ -73,7 +85,7 @@ export default function AiServicesSection() {
       >
         <Header />
 
-        <div className="flex-grow flex flex-col justify-center max-w-6xl mx-auto px-4 space-y-12">
+        <div className="flex-grow flex flex-col justify-center max-w-6xl mx-auto px-4 space-y-12 mt-4">
           <motion.div className="text-center" variants={itemVariants}>
             <h2 className="text-4xl md:text-5xl font-extrabold text-blue-800 mb-6">
               Usługi Automatyzacji AI
@@ -119,6 +131,7 @@ export default function AiServicesSection() {
                 <button
                   onClick={handleOpenChat}
                   className="mt-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 text-sm"
+                  disabled={!chatReady}
                 >
                   Skontaktuj się
                 </button>
@@ -169,6 +182,7 @@ export default function AiServicesSection() {
           <button
             onClick={handleOpenChat}
             className="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition"
+            disabled={!chatReady}
           >
             Umów konsultację
           </button>
