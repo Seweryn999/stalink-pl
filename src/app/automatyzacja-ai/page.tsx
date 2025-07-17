@@ -119,8 +119,6 @@ export default function AiServicesSection() {
             ))}
           </motion.div>
         </div>
-
-        <Footer />
       </motion.section>
 
       {/* Sekcja „Dlaczego automatyzacja” */}
@@ -152,6 +150,7 @@ export default function AiServicesSection() {
             </li>
           </ul>
         </div>
+        <Footer />
       </section>
     </>
   );
