@@ -64,7 +64,7 @@ export default function HeroSection() {
         transition={{ duration: 1, delay: 0.5 }}
       >
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-900">
-          Nowoczesne strony internetowe i aplikacje webowe
+          Nowoczesne strony internetowe i automatyzacja AI
         </h1>
       </motion.div>
 
