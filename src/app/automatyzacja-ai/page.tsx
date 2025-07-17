@@ -157,8 +157,7 @@ export default function AiServicesSection() {
         </div>
       </section>
 
-      {/* 🔷 Gradient premium */}
-      <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 pt-32 md:pt-40 pb-16">
+      <section className="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-600 py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-4 text-center text-white space-y-6">
           <h3 className="text-3xl font-bold">Zacznij automatyzować już dziś</h3>
           <p className="text-lg">
