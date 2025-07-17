@@ -150,8 +150,8 @@ export default function AiServicesSection() {
             </li>
           </ul>
         </div>
-        <Footer />
       </section>
+      <Footer />
     </>
   );
 }
