@@ -1,27 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Header from "../../components/ui/Header";
 import Footer from "../../components/ui/Footer";
 import { motion } from "framer-motion";
 
 export default function AiServicesSection() {
-  const [chatReady, setChatReady] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const interval = setInterval(() => {
-      if (window.voiceflow?.chat?.open) {
-        setChatReady(true);
-        clearInterval(interval);
-      }
-    }, 300);
-
-    return () => clearInterval(interval);
-  }, []);
-
   const services = [
     {
       title: "Chatbot",
@@ -68,11 +52,12 @@ export default function AiServicesSection() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
-  const openChat = () => {
-    if (chatReady) {
-      window.voiceflow?.chat?.open();
+  const handleOpenChat = () => {
+    if (typeof window !== "undefined" && window.voiceflow?.chat?.open) {
+      window.voiceflow.chat.open();
     } else {
-      alert("Chat nie jest jeszcze gotowy. Spróbuj za chwilę.");
+      alert("Chat nie jest jeszcze gotowy. Spróbuj za kilka sekund.");
+      console.warn("Voiceflow chat not ready yet.");
     }
   };
 
@@ -106,9 +91,9 @@ export default function AiServicesSection() {
             className="grid grid-cols-1 md:grid-cols-3 gap-10"
             variants={containerVariants}
           >
-            {services.map((svc) => (
+            {services.map((svc, index) => (
               <motion.div
-                key={svc.title}
+                key={index}
                 className="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center transition-transform transform hover:scale-105"
                 variants={itemVariants}
               >
@@ -132,13 +117,8 @@ export default function AiServicesSection() {
                   ))}
                 </ul>
                 <button
-                  onClick={openChat}
-                  disabled={!chatReady}
-                  className={`mt-auto px-4 py-2 rounded-full text-sm font-semibold ${
-                    chatReady
-                      ? "bg-blue-500 text-white hover:bg-blue-600"
-                      : "bg-gray-300 text-gray-600 cursor-not-allowed"
-                  }`}
+                  onClick={handleOpenChat}
+                  className="mt-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 text-sm"
                 >
                   Skontaktuj się
                 </button>
@@ -187,13 +167,8 @@ export default function AiServicesSection() {
             możliwości.
           </p>
           <button
-            onClick={openChat}
-            disabled={!chatReady}
-            className={`inline-block px-8 py-3 rounded-full font-semibold transition ${
-              chatReady
-                ? "bg-white text-blue-600 hover:bg-gray-100"
-                : "bg-gray-300 text-gray-600 cursor-not-allowed"
-            }`}
+            onClick={handleOpenChat}
+            className="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition"
           >
             Umów konsultację
           </button>
