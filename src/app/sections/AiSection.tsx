@@ -62,7 +62,7 @@ export default function AiServicesSection() {
     <>
       <motion.section
         id="automatyzacja-ai"
-        className="scroll-mt-24 bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen pt-40 md:pt-32 pb-12"
+        className="bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen pt-20 md:pt-32 pb-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
