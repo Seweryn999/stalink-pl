@@ -16,7 +16,7 @@ export default function AiFeatureSection() {
   return (
     <motion.section
       id="ai-automation"
-      className="py-20 bg-gradient-to-b from-white to-gray-50"
+      className="min-h-screen bg-gradient-to-b from-white to-gray-50 flex items-center"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -25,16 +25,17 @@ export default function AiFeatureSection() {
       <div className="max-w-7xl mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-12">
         {/* Tekst i opis */}
         <div className="flex-1 text-center md:text-left space-y-6">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800">
-            Automatyzacja AI dla nowoczesnych stron
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight">
+            Automatyzacja <span className="text-blue-600">AI</span> dla
+            nowoczesnych stron
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg md:text-xl text-gray-600 max-w-lg">
             Zintegruj z naszą stroną inteligentne rozwiązania AI: chatbot,
             system umawiania wizyt i automatyczne zbieranie opinii. Pozwól
             technologii pracować dla Ciebie — zwiększ satysfakcję klientów,
             zoptymalizuj procesy i zyskaj przewagę nad konkurencją.
           </p>
-          <ul className="text-gray-600 list-disc list-inside space-y-2">
+          <ul className="text-gray-700 list-disc list-inside space-y-2 text-base">
             <li>Chatbot 24/7 – natychmiastowe odpowiedzi i zbieranie leadów</li>
             <li>
               Rezerwacje online – eliminacja błędów i przypomnienia SMS/Email
@@ -43,20 +44,22 @@ export default function AiFeatureSection() {
           </ul>
           <a
             href="#automatyzacja-ai"
-            className="inline-block mt-4 px-8 py-3 bg-blue-500 text-white font-semibold rounded-full transition-all hover:bg-blue-600"
+            className="inline-block mt-6 px-8 py-3 bg-blue-600 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition"
           >
             Dowiedz się więcej
           </a>
         </div>
 
         {/* Grafika */}
-        <div className="flex-1 relative w-full h-64 md:h-80 lg:h-96">
-          <Image
-            src="/images/aimain.png"
-            alt="Futuristic AI network illustration"
-            fill
-            className="object-contain rounded-xl shadow-2xl"
-          />
+        <div className="flex-1 flex justify-center">
+          <div className="relative w-80 h-80 md:w-96 md:h-96">
+            <Image
+              src="/images/aimain.png"
+              alt="Futuristic AI network illustration"
+              fill
+              className="object-contain drop-shadow-2xl"
+            />
+          </div>
         </div>
       </div>
     </motion.section>
