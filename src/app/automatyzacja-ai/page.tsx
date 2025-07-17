@@ -151,6 +151,24 @@ export default function AiServicesSection() {
           </ul>
         </div>
       </section>
+      <section className="bg-blue-600 py-12">
+        <div className="max-w-4xl mx-auto px-4 text-center text-white">
+          <h3 className="text-2xl md:text-3xl font-bold mb-4">
+            Zacznij automatyzować już dziś
+          </h3>
+          <p className="text-base md:text-lg mb-6">
+            Porozmawiajmy o tym, jak możemy wdrożyć inteligentne rozwiązania AI
+            w Twojej firmie. Umów bezpłatną konsultację i odkryj nowe
+            możliwości.
+          </p>
+          <a
+            href="/kontakt"
+            className="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition"
+          >
+            Umów konsultację
+          </a>
+        </div>
+      </section>
       <Footer />
     </>
   );
