@@ -56,7 +56,7 @@ export default function AiServicesSection() {
     <>
       <motion.section
         id="automatyzacja-ai"
-        className="bg-gradient-to-b from-blue-50 to-blue-100 flex flex-col justify-center min-h-screen"
+        className="bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen py-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -64,10 +64,10 @@ export default function AiServicesSection() {
       >
         <Header />
 
-        <div className="flex-grow flex flex-col justify-center max-w-6xl mx-auto px-4">
+        <div className="flex-grow flex flex-col justify-center max-w-6xl mx-auto px-4 space-y-12">
           {/* Nagłówek i wprowadzenie */}
-          <motion.div className="text-center mb-8" variants={itemVariants}>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-blue-800 mb-4">
+          <motion.div className="text-center" variants={itemVariants}>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-blue-800 mb-6">
               Usługi Automatyzacji AI
             </h2>
             <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
@@ -81,13 +81,13 @@ export default function AiServicesSection() {
 
           {/* Karty usług */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-3 gap-10"
             variants={containerVariants}
           >
             {services.map((svc) => (
               <motion.div
                 key={svc.title}
-                className="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center transition-transform transform hover:scale-105"
+                className="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center transition-transform transform hover:scale-105"
                 variants={itemVariants}
               >
                 <div className="w-24 h-24 mb-4 relative">
@@ -122,12 +122,12 @@ export default function AiServicesSection() {
       </motion.section>
 
       {/* Sekcja „Dlaczego automatyzacja” */}
-      <section className="bg-gradient-to-b from-blue-100 to-blue-50 py-12">
+      <section className="bg-gradient-to-b from-blue-100/60 to-blue-50 py-16">
         <div className="max-w-4xl mx-auto px-4">
-          <h3 className="text-3xl font-bold text-center text-blue-800 mb-6">
+          <h3 className="text-3xl font-bold text-center text-blue-800 mb-8">
             Dlaczego automatyzacja jest kluczowa?
           </h3>
-          <ul className="list-disc list-inside text-gray-700 space-y-2 text-sm">
+          <ul className="list-disc list-inside text-gray-700 space-y-3 text-base">
             <li>
               Obsługa 24/7: Twoi klienci nigdy nie czekają, nawet poza godzinami
               pracy.
@@ -151,12 +151,12 @@ export default function AiServicesSection() {
           </ul>
         </div>
       </section>
-      <section className="bg-blue-600 py-12">
-        <div className="max-w-4xl mx-auto px-4 text-center text-white">
-          <h3 className="text-2xl md:text-3xl font-bold mb-4">
-            Zacznij automatyzować już dziś
-          </h3>
-          <p className="text-base md:text-lg mb-6">
+
+      {/* CTA na dole */}
+      <section className="bg-blue-500/90 py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center text-white space-y-6">
+          <h3 className="text-3xl font-bold">Zacznij automatyzować już dziś</h3>
+          <p className="text-lg">
             Porozmawiajmy o tym, jak możemy wdrożyć inteligentne rozwiązania AI
             w Twojej firmie. Umów bezpłatną konsultację i odkryj nowe
             możliwości.
@@ -169,6 +169,7 @@ export default function AiServicesSection() {
           </a>
         </div>
       </section>
+
       <Footer />
     </>
   );
