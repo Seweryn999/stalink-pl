@@ -53,9 +53,7 @@ export default function AiServicesSection() {
   };
 
   const openChat = () => {
-    if (window.voiceflow?.chat?.open) {
-      window.voiceflow.chat.open();
-    }
+    window.voiceflow?.chat?.open();
   };
 
   return (
@@ -125,7 +123,7 @@ export default function AiServicesSection() {
         </div>
       </motion.section>
 
-      <section className="bg-gradient-to-b from-blue-100/60 to-blue-50 py-24">
+      <section className="bg-gradient-to-b from-blue-100/60 to-blue-50 py-28">
         <div className="max-w-4xl mx-auto px-4">
           <h3 className="text-3xl font-bold text-center text-blue-800 mb-12">
             Dlaczego automatyzacja jest kluczowa?
