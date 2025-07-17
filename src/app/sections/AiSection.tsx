@@ -4,7 +4,6 @@ import Image from "next/image";
 import Header from "../../components/ui/Header";
 import Footer from "../../components/ui/Footer";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 export default function AiServicesSection() {
   const services = [
@@ -53,20 +52,11 @@ export default function AiServicesSection() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
-  const handleOpenChat = () => {
-    if (typeof window !== "undefined" && window.voiceflow?.chat?.open) {
-      window.voiceflow.chat.open();
-    } else {
-      console.warn("Voiceflow chat is not yet loaded");
-    }
-  };
-
   return (
     <>
       <motion.section
         id="automatyzacja-ai"
         className="bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen pt-24 pb-12"
-        // ✅ pt-24 -> miejsce od headera
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -117,10 +107,7 @@ export default function AiServicesSection() {
                     <li key={i}>{b}</li>
                   ))}
                 </ul>
-                <button
-                  onClick={handleOpenChat}
-                  className="mt-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 text-sm"
-                >
+                <button className="vf-trigger mt-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 text-sm">
                   Skontaktuj się
                 </button>
               </motion.div>
@@ -167,10 +154,7 @@ export default function AiServicesSection() {
             w Twojej firmie. Umów bezpłatną konsultację i odkryj nowe
             możliwości.
           </p>
-          <button
-            onClick={handleOpenChat}
-            className="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition"
-          >
+          <button className="vf-trigger inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition">
             Umów konsultację
           </button>
         </div>
