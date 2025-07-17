@@ -43,7 +43,7 @@ export default function AiFeatureSection() {
             <li>Opinie Google – automatyczne powiadomienia i lepsze SEO</li>
           </ul>
           <a
-            href="#automatyzacja-ai"
+            href="/automatyzacja-ai"
             className="inline-block px-8 py-3 bg-blue-500 text-white font-semibold rounded-full transition-all hover:bg-blue-600"
           >
             Dowiedz się więcej
@@ -53,7 +53,7 @@ export default function AiFeatureSection() {
         {/* Grafika */}
         <div className="flex-1 relative w-full h-64 md:h-80">
           <Image
-            src="/images/ai-automation-graphic.png"
+            src="/images/aimain.png"
             alt="Grafika AI Automation"
             fill
             className="object-contain"
