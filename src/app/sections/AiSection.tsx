@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function AiFeatureSection() {
-  const container = {
+  const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -21,7 +21,7 @@ export default function AiFeatureSection() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      variants={containerVariants}
+      variants={containerVariants} // ✅ już działa
     >
       <div className="max-w-7xl mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-12">
         {/* Tekst i opis */}
