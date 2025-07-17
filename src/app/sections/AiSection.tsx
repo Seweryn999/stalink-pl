@@ -61,12 +61,10 @@ export default function AiServicesSection() {
   return (
     <>
       <Header />
-      {/* Spacer żeby header nie przykrywał */}
-      <div className="h-16 md:h-20"></div>
 
       <motion.section
         id="automatyzacja-ai"
-        className="bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen py-12"
+        className="pt-24 md:pt-32 bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen py-12 scroll-mt-24 md:scroll-mt-32"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
