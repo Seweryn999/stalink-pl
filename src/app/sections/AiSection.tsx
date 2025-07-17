@@ -52,11 +52,9 @@ export default function AiServicesSection() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
-  const handleOpenChat = () => {
-    if (typeof window !== "undefined" && window.voiceflow?.chat?.open) {
+  const openChat = () => {
+    if (typeof window !== "undefined" && window.voiceflow?.chat) {
       window.voiceflow.chat.open();
-    } else {
-      alert("Chat nie jest jeszcze gotowy, spróbuj za chwilę.");
     }
   };
 
@@ -64,7 +62,7 @@ export default function AiServicesSection() {
     <>
       <motion.section
         id="automatyzacja-ai"
-        className="bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen pt-36 md:pt-24 pb-12"
+        className="scroll-mt-24 bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen pt-40 md:pt-32 pb-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -90,9 +88,9 @@ export default function AiServicesSection() {
             className="grid grid-cols-1 md:grid-cols-3 gap-10"
             variants={containerVariants}
           >
-            {services.map((svc, index) => (
+            {services.map((svc, idx) => (
               <motion.div
-                key={index}
+                key={idx}
                 className="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center transition-transform transform hover:scale-105"
                 variants={itemVariants}
               >
@@ -116,7 +114,7 @@ export default function AiServicesSection() {
                   ))}
                 </ul>
                 <button
-                  onClick={handleOpenChat}
+                  onClick={openChat}
                   className="mt-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 text-sm"
                 >
                   Skontaktuj się
@@ -166,7 +164,7 @@ export default function AiServicesSection() {
             możliwości.
           </p>
           <button
-            onClick={handleOpenChat}
+            onClick={openChat}
             className="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition"
           >
             Umów konsultację
