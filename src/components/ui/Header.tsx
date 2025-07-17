@@ -24,7 +24,7 @@ export default function Header() {
   const toggleMenu = () => dispatch({ type: "TOGGLE_MENU" });
 
   const links = [
-    { href: "/", label: "Home" },
+    { href: "/", label: "Start" },
     { href: "/o-mnie", label: "O mnie" },
     { href: "/projekty", label: "Projekty" },
     { href: "/automatyzacja-ai", label: "Automatyzacja AI" },
