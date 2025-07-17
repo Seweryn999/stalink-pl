@@ -63,16 +63,16 @@ export default function AiServicesSection() {
     >
       <Header />
 
-      <div className="flex-grow max-w-6xl mx-auto px-4 pt-32 pb-12">
+      <div className="flex-grow max-w-6xl mx-auto px-4 pt-20 pb-8">
         {/* Nagłówek i wprowadzenie */}
         <motion.h2
-          className="text-4xl md:text-5xl font-extrabold text-center text-blue-800 mb-6"
+          className="text-3xl md:text-4xl font-extrabold text-center text-blue-800 mb-4"
           variants={itemVariants}
         >
           Usługi Automatyzacji AI
         </motion.h2>
         <motion.p
-          className="text-lg md:text-xl text-gray-700 text-center max-w-3xl mx-auto mb-12"
+          className="text-base md:text-lg text-gray-700 text-center max-w-3xl mx-auto mb-8"
           variants={itemVariants}
         >
           Wdrożenie inteligentnych rozwiązań AI na stronie internetowej to nie
@@ -83,16 +83,16 @@ export default function AiServicesSection() {
 
         {/* Karty usług */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
           variants={containerVariants}
         >
           {services.map((svc) => (
             <motion.div
               key={svc.title}
-              className="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center transition-transform transform hover:scale-105"
+              className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center transition-transform transform hover:scale-105"
               variants={itemVariants}
             >
-              <div className="w-32 h-32 mb-4 relative">
+              <div className="w-24 h-24 mb-3 relative">
                 <Image
                   src={svc.img}
                   alt={svc.title}
@@ -100,20 +100,20 @@ export default function AiServicesSection() {
                   className="object-contain"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-blue-800 mb-2 text-center">
+              <h3 className="text-xl font-bold text-blue-800 mb-1 text-center">
                 {svc.title}
               </h3>
-              <p className="text-gray-600 mb-4 text-center">
+              <p className="text-gray-600 mb-2 text-center text-sm">
                 {svc.description}
               </p>
-              <ul className="list-disc list-inside text-gray-600 mb-6 space-y-1 text-left">
+              <ul className="list-disc list-inside text-gray-600 mb-4 space-y-1 text-left text-sm">
                 {svc.benefits.map((b, i) => (
                   <li key={i}>{b}</li>
                 ))}
               </ul>
               <a
                 href="#kontakt"
-                className="mt-auto px-6 py-3 bg-blue-500 text-white font-semibold rounded-full transition-all hover:bg-blue-600"
+                className="mt-auto px-4 py-2 bg-blue-500 text-white font-medium rounded-full text-sm hover:bg-blue-600"
               >
                 Skontaktuj się
               </a>
@@ -121,15 +121,15 @@ export default function AiServicesSection() {
           ))}
         </motion.div>
 
-        {/* Sekcja „Dlaczego automatyzacja?” */}
+        {/* Dlaczego automatyzacja */}
         <motion.div
-          className="bg-white/50 backdrop-blur-lg rounded-2xl p-8 mb-16"
+          className="bg-white/70 backdrop-blur rounded-xl p-6 mb-12"
           variants={itemVariants}
         >
-          <h3 className="text-3xl font-bold text-center text-blue-800 mb-4">
+          <h3 className="text-2xl font-bold text-center text-blue-800 mb-3">
             Dlaczego automatyzacja jest kluczowa?
           </h3>
-          <ul className="list-disc list-inside text-gray-700 space-y-2 max-w-3xl mx-auto">
+          <ul className="list-disc list-inside text-gray-700 space-y-1 max-w-3xl mx-auto text-sm">
             <li>
               Obsługa 24/7: Twoi klienci nigdy nie czekają, nawet poza godzinami
               pracy.
@@ -154,10 +154,10 @@ export default function AiServicesSection() {
         </motion.div>
 
         {/* CTA końcowe */}
-        <motion.div className="text-center mb-12" variants={itemVariants}>
+        <motion.div className="text-center mb-8" variants={itemVariants}>
           <a
             href="/kontakt"
-            className="inline-block px-8 py-4 bg-blue-500 text-white font-bold rounded-full text-lg transition-all hover:bg-blue-600"
+            className="inline-block px-6 py-3 bg-blue-500 text-white font-bold rounded-full text-sm hover:bg-blue-600"
           >
             Umów bezpłatną konsultację
           </a>
