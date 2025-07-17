@@ -53,83 +53,83 @@ export default function AiServicesSection() {
   };
 
   return (
-    <motion.section
-      id="automatyzacja-ai"
-      className="flex flex-col min-h-screen bg-gradient-to-b from-blue-50 to-blue-100"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      variants={containerVariants}
-    >
-      <Header />
+    <>
+      <motion.section
+        id="automatyzacja-ai"
+        className="bg-gradient-to-b from-blue-50 to-blue-100 flex flex-col justify-center min-h-screen"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariants}
+      >
+        <Header />
 
-      <div className="flex-grow max-w-6xl mx-auto px-4 pt-20 pb-8">
-        {/* Nagłówek i wprowadzenie */}
-        <motion.h2
-          className="text-3xl md:text-4xl font-extrabold text-center text-blue-800 mb-4"
-          variants={itemVariants}
-        >
-          Usługi Automatyzacji AI
-        </motion.h2>
-        <motion.p
-          className="text-base md:text-lg text-gray-700 text-center max-w-3xl mx-auto mb-8"
-          variants={itemVariants}
-        >
-          Wdrożenie inteligentnych rozwiązań AI na stronie internetowej to nie
-          tylko prestiż, ale realne korzyści: skrócenie czasu obsługi klienta,
-          wyższe konwersje i łatwiejsze skalowanie biznesu. Poznaj nasze
-          kluczowe usługi, które działają 24/7 i odciążają Twoją firmę.
-        </motion.p>
+        <div className="flex-grow flex flex-col justify-center max-w-6xl mx-auto px-4">
+          {/* Nagłówek i wprowadzenie */}
+          <motion.div className="text-center mb-8" variants={itemVariants}>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-blue-800 mb-4">
+              Usługi Automatyzacji AI
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+              Wdrożenie inteligentnych rozwiązań AI na stronie internetowej to
+              nie tylko prestiż, ale realne korzyści: skrócenie czasu obsługi
+              klienta, wyższe konwersje i łatwiejsze skalowanie biznesu. Poznaj
+              nasze kluczowe usługi, które działają 24/7 i odciążają Twoją
+              firmę.
+            </p>
+          </motion.div>
 
-        {/* Karty usług */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
-          variants={containerVariants}
-        >
-          {services.map((svc) => (
-            <motion.div
-              key={svc.title}
-              className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center transition-transform transform hover:scale-105"
-              variants={itemVariants}
-            >
-              <div className="w-24 h-24 mb-3 relative">
-                <Image
-                  src={svc.img}
-                  alt={svc.title}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-blue-800 mb-1 text-center">
-                {svc.title}
-              </h3>
-              <p className="text-gray-600 mb-2 text-center text-sm">
-                {svc.description}
-              </p>
-              <ul className="list-disc list-inside text-gray-600 mb-4 space-y-1 text-left text-sm">
-                {svc.benefits.map((b, i) => (
-                  <li key={i}>{b}</li>
-                ))}
-              </ul>
-              <a
-                href="#kontakt"
-                className="mt-auto px-4 py-2 bg-blue-500 text-white font-medium rounded-full text-sm hover:bg-blue-600"
+          {/* Karty usług */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={containerVariants}
+          >
+            {services.map((svc) => (
+              <motion.div
+                key={svc.title}
+                className="bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center transition-transform transform hover:scale-105"
+                variants={itemVariants}
               >
-                Skontaktuj się
-              </a>
-            </motion.div>
-          ))}
-        </motion.div>
+                <div className="w-24 h-24 mb-4 relative">
+                  <Image
+                    src={svc.img}
+                    alt={svc.title}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-blue-800 mb-2 text-center">
+                  {svc.title}
+                </h3>
+                <p className="text-gray-600 mb-4 text-center">
+                  {svc.description}
+                </p>
+                <ul className="list-disc list-inside text-gray-600 mb-6 space-y-1 text-left text-sm">
+                  {svc.benefits.map((b, i) => (
+                    <li key={i}>{b}</li>
+                  ))}
+                </ul>
+                <a
+                  href="#kontakt"
+                  className="mt-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 text-sm"
+                >
+                  Skontaktuj się
+                </a>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
 
-        {/* Dlaczego automatyzacja */}
-        <motion.div
-          className="bg-white/70 backdrop-blur rounded-xl p-6 mb-12"
-          variants={itemVariants}
-        >
-          <h3 className="text-2xl font-bold text-center text-blue-800 mb-3">
+        <Footer />
+      </motion.section>
+
+      {/* Sekcja „Dlaczego automatyzacja” */}
+      <section className="bg-gradient-to-b from-blue-100 to-blue-50 py-12">
+        <div className="max-w-4xl mx-auto px-4">
+          <h3 className="text-3xl font-bold text-center text-blue-800 mb-6">
             Dlaczego automatyzacja jest kluczowa?
           </h3>
-          <ul className="list-disc list-inside text-gray-700 space-y-1 max-w-3xl mx-auto text-sm">
+          <ul className="list-disc list-inside text-gray-700 space-y-2 text-sm">
             <li>
               Obsługa 24/7: Twoi klienci nigdy nie czekają, nawet poza godzinami
               pracy.
@@ -151,20 +151,8 @@ export default function AiServicesSection() {
               konieczności zatrudniania kolejnych osób.
             </li>
           </ul>
-        </motion.div>
-
-        {/* CTA końcowe */}
-        <motion.div className="text-center mb-8" variants={itemVariants}>
-          <a
-            href="/kontakt"
-            className="inline-block px-6 py-3 bg-blue-500 text-white font-bold rounded-full text-sm hover:bg-blue-600"
-          >
-            Umów bezpłatną konsultację
-          </a>
-        </motion.div>
-      </div>
-
-      <Footer />
-    </motion.section>
+        </div>
+      </section>
+    </>
   );
 }
