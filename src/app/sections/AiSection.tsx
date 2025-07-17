@@ -1,11 +1,27 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Header from "../../components/ui/Header";
 import Footer from "../../components/ui/Footer";
 import { motion } from "framer-motion";
 
 export default function AiServicesSection() {
+  const [chatReady, setChatReady] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const interval = setInterval(() => {
+      if (window.voiceflow?.chat?.open) {
+        setChatReady(true);
+        clearInterval(interval);
+      }
+    }, 300);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const services = [
     {
       title: "Chatbot",
@@ -53,7 +69,11 @@ export default function AiServicesSection() {
   };
 
   const openChat = () => {
-    window.voiceflow?.chat?.open();
+    if (chatReady) {
+      window.voiceflow?.chat?.open();
+    } else {
+      alert("Chat nie jest jeszcze gotowy. Spróbuj za chwilę.");
+    }
   };
 
   return (
@@ -113,7 +133,12 @@ export default function AiServicesSection() {
                 </ul>
                 <button
                   onClick={openChat}
-                  className="mt-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 text-sm"
+                  disabled={!chatReady}
+                  className={`mt-auto px-4 py-2 rounded-full text-sm font-semibold ${
+                    chatReady
+                      ? "bg-blue-500 text-white hover:bg-blue-600"
+                      : "bg-gray-300 text-gray-600 cursor-not-allowed"
+                  }`}
                 >
                   Skontaktuj się
                 </button>
@@ -163,7 +188,12 @@ export default function AiServicesSection() {
           </p>
           <button
             onClick={openChat}
-            className="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition"
+            disabled={!chatReady}
+            className={`inline-block px-8 py-3 rounded-full font-semibold transition ${
+              chatReady
+                ? "bg-white text-blue-600 hover:bg-gray-100"
+                : "bg-gray-300 text-gray-600 cursor-not-allowed"
+            }`}
           >
             Umów konsultację
           </button>
