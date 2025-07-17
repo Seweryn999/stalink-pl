@@ -42,6 +42,7 @@ export default function AiServicesSection() {
     },
   ];
 
+  // 🔷 TU JEST POPRAWKA
   const containerVariants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.2 } },
@@ -73,7 +74,6 @@ export default function AiServicesSection() {
         variants={containerVariants}
       >
         <div className="flex-grow flex flex-col justify-center max-w-6xl mx-auto px-4 space-y-12">
-          {/* Nagłówek i wprowadzenie */}
           <motion.div className="text-center" variants={itemVariants}>
             <h2 className="text-4xl md:text-5xl font-extrabold text-blue-800 mb-6">
               Usługi Automatyzacji AI
@@ -87,7 +87,6 @@ export default function AiServicesSection() {
             </p>
           </motion.div>
 
-          {/* Karty usług */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-10"
             variants={containerVariants}
@@ -129,7 +128,6 @@ export default function AiServicesSection() {
         </div>
       </motion.section>
 
-      {/* Sekcja „Dlaczego automatyzacja” */}
       <section className="bg-gradient-to-b from-blue-100/60 to-blue-50 py-16">
         <div className="max-w-4xl mx-auto px-4">
           <h3 className="text-3xl font-bold text-center text-blue-800 mb-8">
@@ -160,7 +158,6 @@ export default function AiServicesSection() {
         </div>
       </section>
 
-      {/* CTA na dole */}
       <section className="bg-blue-500/90 py-16">
         <div className="max-w-4xl mx-auto px-4 text-center text-white space-y-6">
           <h3 className="text-3xl font-bold">Zacznij automatyzować już dziś</h3>
