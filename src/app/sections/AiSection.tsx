@@ -16,12 +16,12 @@ export default function AiFeatureSection() {
 
   return (
     <motion.section
-      id="ai-automation"
-      className="py-20 bg-gradient-to-b from-white to-gray-50"
+      id="automatyzacja-ai"
+      className="bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen py-12 pt-20 md:pt-24 scroll-mt-20 md:scroll-mt-24"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      variants={container}
+      variants={containerVariants}
     >
       <div className="max-w-7xl mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-12">
         {/* Tekst i opis */}

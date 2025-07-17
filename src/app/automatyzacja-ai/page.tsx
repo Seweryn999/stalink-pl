@@ -52,13 +52,21 @@ export default function AiServicesSection() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
+  const openChat = () => {
+    if (typeof window !== "undefined" && window.voiceflow?.chat?.open) {
+      window.voiceflow.chat.open();
+    } else {
+      console.error("Voiceflow chat is not initialized yet.");
+    }
+  };
+
   return (
     <>
       <Header />
 
       <motion.section
         id="automatyzacja-ai"
-        className="bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen py-12 pt-[160px] md:pt-[200px] scroll-mt-[160px] md:scroll-mt-[200px]"
+        className="bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen py-12 pt-20 md:pt-24 scroll-mt-20 md:scroll-mt-24"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -109,12 +117,12 @@ export default function AiServicesSection() {
                     <li key={i}>{b}</li>
                   ))}
                 </ul>
-                <a
-                  href="#kontakt"
+                <button
+                  onClick={openChat}
                   className="mt-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 text-sm"
                 >
                   Skontaktuj się
-                </a>
+                </button>
               </motion.div>
             ))}
           </motion.div>
@@ -161,12 +169,12 @@ export default function AiServicesSection() {
             w Twojej firmie. Umów bezpłatną konsultację i odkryj nowe
             możliwości.
           </p>
-          <a
-            href="/kontakt"
+          <button
+            onClick={openChat}
             className="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition"
           >
             Umów konsultację
-          </a>
+          </button>
         </div>
       </section>
 
