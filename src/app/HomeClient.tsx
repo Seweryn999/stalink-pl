@@ -8,6 +8,7 @@ import AboutSection from "./sections/AboutSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ContactSection from "./sections/ContactSection";
 import Footer from "../components/ui/Footer";
+import AiFeatureSection from "./sections/AiSection";
 
 export default function HomeClient() {
   return (
@@ -53,6 +54,7 @@ export default function HomeClient() {
         <Header />
         <HeroSection />
         <AboutSection />
+        <AiFeatureSection />
         <ProjectsSection />
         <ContactSection />
         <Footer />
