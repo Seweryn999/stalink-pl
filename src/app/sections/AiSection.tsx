@@ -53,23 +53,11 @@ export default function AiServicesSection() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
-  const [chatReady, setChatReady] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (typeof window !== "undefined" && window.voiceflow?.chat?.open) {
-        setChatReady(true);
-        clearInterval(interval);
-      }
-    }, 500);
-    return () => clearInterval(interval);
-  }, []);
-
   const handleOpenChat = () => {
     if (typeof window !== "undefined" && window.voiceflow?.chat?.open) {
       window.voiceflow.chat.open();
     } else {
-      alert("Chat nie jest jeszcze gotowy. Spróbuj za chwilę.");
+      console.warn("Voiceflow chat is not yet loaded");
     }
   };
 
@@ -77,7 +65,8 @@ export default function AiServicesSection() {
     <>
       <motion.section
         id="automatyzacja-ai"
-        className="bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen py-20"
+        className="bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen pt-24 pb-12"
+        // ✅ pt-24 -> miejsce od headera
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -85,7 +74,7 @@ export default function AiServicesSection() {
       >
         <Header />
 
-        <div className="flex-grow flex flex-col justify-center max-w-6xl mx-auto px-4 space-y-12 mt-8 md:mt-0">
+        <div className="flex-grow flex flex-col justify-center max-w-6xl mx-auto px-4 space-y-12">
           <motion.div className="text-center" variants={itemVariants}>
             <h2 className="text-4xl md:text-5xl font-extrabold text-blue-800 mb-6">
               Usługi Automatyzacji AI
@@ -103,9 +92,9 @@ export default function AiServicesSection() {
             className="grid grid-cols-1 md:grid-cols-3 gap-10"
             variants={containerVariants}
           >
-            {services.map((svc) => (
+            {services.map((svc, index) => (
               <motion.div
-                key={svc.title}
+                key={index}
                 className="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center transition-transform transform hover:scale-105"
                 variants={itemVariants}
               >
@@ -130,12 +119,7 @@ export default function AiServicesSection() {
                 </ul>
                 <button
                   onClick={handleOpenChat}
-                  disabled={!chatReady}
-                  className={`mt-auto px-4 py-2 font-semibold rounded-full text-sm ${
-                    chatReady
-                      ? "bg-blue-500 text-white hover:bg-blue-600"
-                      : "bg-gray-300 text-gray-600 cursor-not-allowed"
-                  }`}
+                  className="mt-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 text-sm"
                 >
                   Skontaktuj się
                 </button>
@@ -185,12 +169,7 @@ export default function AiServicesSection() {
           </p>
           <button
             onClick={handleOpenChat}
-            disabled={!chatReady}
-            className={`inline-block px-8 py-3 font-semibold rounded-full transition ${
-              chatReady
-                ? "bg-white text-blue-600 hover:bg-gray-100"
-                : "bg-gray-300 text-gray-600 cursor-not-allowed"
-            }`}
+            className="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition"
           >
             Umów konsultację
           </button>
