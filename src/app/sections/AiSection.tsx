@@ -52,6 +52,14 @@ export default function AiServicesSection() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
+  const handleOpenChat = () => {
+    if (typeof window !== "undefined" && window.voiceflow?.chat?.open) {
+      window.voiceflow.chat.open();
+    } else {
+      alert("Chat nie jest jeszcze gotowy, spróbuj za chwilę.");
+    }
+  };
+
   return (
     <>
       <motion.section
@@ -107,7 +115,10 @@ export default function AiServicesSection() {
                     <li key={i}>{b}</li>
                   ))}
                 </ul>
-                <button className="vf-trigger mt-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 text-sm">
+                <button
+                  onClick={handleOpenChat}
+                  className="mt-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 text-sm"
+                >
                   Skontaktuj się
                 </button>
               </motion.div>
@@ -154,7 +165,10 @@ export default function AiServicesSection() {
             w Twojej firmie. Umów bezpłatną konsultację i odkryj nowe
             możliwości.
           </p>
-          <button className="vf-trigger inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition">
+          <button
+            onClick={handleOpenChat}
+            className="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition"
+          >
             Umów konsultację
           </button>
         </div>
