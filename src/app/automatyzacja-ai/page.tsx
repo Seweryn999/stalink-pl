@@ -19,16 +19,17 @@ export default function AiServicesSection() {
       img: "/images/aisection2.png",
     },
     {
-      title: "System umawiania spotkań",
+      title: "Integracja z Booksy",
       description:
-        "Automatyczny system rezerwacji terminów zintegrowany z kalendarzem, który przypomina o wizytach.",
+        "Bezproblemowa integracja strony internetowej z Twoim kalendarzem Booksy. Klienci mogą umawiać wizyty bezpośrednio przez stronę, zachowując wygodę Booksy.",
       benefits: [
-        "Eliminuje podwójne rezerwacje i pomyłki.",
-        "Przypomnienia SMS/Email zmniejszają liczbę nieodbytych wizyt.",
-        "Zwiększa lojalność klientów dzięki prostemu UX.",
+        "Zachowujesz dotychczasowy system rezerwacji bez zmian.",
+        "Klient nie opuszcza Twojej strony – wszystko dzieje się w jednym miejscu.",
+        "Zwiększenie liczby rezerwacji dzięki lepszej prezentacji usług i silniejszemu zaufaniu do marki.",
       ],
       img: "/images/aisection1.png",
     },
+
     {
       title: "System ocen z powiadomieniami",
       description:
