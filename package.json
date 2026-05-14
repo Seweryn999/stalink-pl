@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "tsc --noEmit && next build",
+    "export": "next build",
     "start": "next start",
     "lint:fix": "next lint",
     "postbuild": "next-sitemap"
@@ -13,6 +14,8 @@
     "@react-three/drei": "^10.0.5",
     "@react-three/fiber": "^9.1.1",
     "@react-three/postprocessing": "^3.0.4",
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/typography": "^0.5.19",
     "@vercel/analytics": "^1.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -30,6 +33,7 @@
     "serve": "^14.2.4",
     "sonner": "^2.0.6",
     "tailwind-merge": "^3.2.0",
+    "tailwindcss-scroll-snap": "^1.1.0",
     "three": "^0.175.0",
     "three-stdlib": "^2.35.14",
     "tw-animate-css": "^1.2.5"
