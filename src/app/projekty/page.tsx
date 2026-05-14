@@ -7,7 +7,7 @@ import Footer from "../../components/ui/Footer";
 import { motion } from "framer-motion";
 
 const BBHairSpaImage = "/images/bbhairspa.png";
-const TaskFlowImage = "/images/taskflow.png";
+const TaskFlowImage = "/images/taskFlow.png";
 const ExpenseTrackerImage = "/images/expenseTracker.png";
 const FilmotekaImage = "/images/filmoteka.png";
 

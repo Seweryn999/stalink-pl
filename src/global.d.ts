@@ -1,5 +1,3 @@
-// src/global.d.ts
-
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 
@@ -23,5 +21,14 @@ declare global {
     interface IntrinsicElements {
       textGeometry: React.DetailedHTMLProps<any, any>;
     }
+  }
+
+  interface Window {
+    voiceflow?: {
+      chat?: {
+        open: () => void;
+        load?: (config: any) => void;
+      };
+    };
   }
 }

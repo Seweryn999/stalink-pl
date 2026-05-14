@@ -68,7 +68,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           strategy="afterInteractive"
         />
         <Script
-          id="ga4-init"
+          id="ga4-init-1"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
@@ -84,15 +84,42 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           strategy="afterInteractive"
         />
         <Script
-          id="ga4-init"
+          id="ga4-init-2"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}');
-    `,
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}');
+            `,
+          }}
+        />
+        <Script
+          id="voiceflow-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function (d, t) {
+                const v = d.createElement(t);
+                const s = d.getElementsByTagName(t)[0];
+                v.onload = function () {
+                  if (window.voiceflow?.chat?.load) {
+                    window.voiceflow.chat.load({
+                      verify: { projectID: "686e3f5fb79c3cad291cb4bf" },
+                      url: "https://general-runtime.voiceflow.com",
+                      versionID: "production",
+                      voice: {
+                        url: "https://runtime-api.voiceflow.com",
+                      },
+                    });
+                  }
+                };
+                v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+                v.type = "text/javascript";
+                s.parentNode.insertBefore(v, s);
+              })(document, "script");
+            `,
           }}
         />
       </head>
