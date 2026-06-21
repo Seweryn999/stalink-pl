@@ -129,7 +129,7 @@ export default function ContactSection() {
   return (
     <motion.section
       id="contact"
-      className="min-h-screen bg-gradient-to-br from-white via-blue-100 to-blue-200 flex items-center justify-center px-4 py-20"
+      className="min-h-screen bg-[#0a0e1f] flex items-center justify-center px-4 py-20"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -143,18 +143,18 @@ export default function ContactSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <h2 className="!mb-3 text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-widest text-gray-800 text-center md:text-left">
+          <h2 className="!mb-3 text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-widest text-white text-center md:text-left">
             Skontaktuj się
           </h2>
 
           {submitted ? (
-            <div className="text-center text-blue-600 text-xl font-medium animate-fade-in">
+            <div className="text-center text-cyan-400 text-xl font-medium animate-fade-in">
               ✓ Wiadomość wysłana! Dziękuję za kontakt.
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-8">
               {error && (
-                <div className="text-center text-red-600 text-xl font-medium">
+                <div className="text-center text-red-400 text-xl font-medium">
                   {error}
                 </div>
               )}
@@ -165,7 +165,7 @@ export default function ContactSection() {
                   placeholder="Twoje imię"
                   value={formData.name}
                   onChange={handleChange}
-                  className="!mb-3 !px-2 !py-2 w-full bg-blue-50 text-gray-800 p-3 rounded-md border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="!mb-3 !px-2 !py-2 w-full bg-white/5 text-white placeholder:text-slate-500 p-3 rounded-md border border-cyan-400/20 focus:outline-none focus:ring-2 focus:ring-cyan-400/60"
                   required
                 />
               </div>
@@ -177,7 +177,7 @@ export default function ContactSection() {
                   placeholder="Twój email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="!mb-3 !px-2 !py-2 w-full bg-blue-50 text-gray-800 p-3 rounded-md border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="!mb-3 !px-2 !py-2 w-full bg-white/5 text-white placeholder:text-slate-500 p-3 rounded-md border border-cyan-400/20 focus:outline-none focus:ring-2 focus:ring-cyan-400/60"
                   required
                 />
               </div>
@@ -189,7 +189,7 @@ export default function ContactSection() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
-                  className="!mb-3 !px-2 !py-2 w-full bg-blue-50 text-gray-800 p-3 rounded-md border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="!mb-3 !px-2 !py-2 w-full bg-white/5 text-white placeholder:text-slate-500 p-3 rounded-md border border-cyan-400/20 focus:outline-none focus:ring-2 focus:ring-cyan-400/60"
                   required
                 />
               </div>
@@ -198,10 +198,10 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`relative !mt-2 !px-2 !py-2 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_10px_#60a5fa] border-2 border-blue-300 ${
+                  className={`relative !mt-2 !px-2 !py-2 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(34,211,238,0.5)] border-2 border-cyan-400/30 ${
                     loading
-                      ? "bg-blue-300 cursor-not-allowed text-gray-600"
-                      : "bg-white text-blue-500 hover:bg-blue-50"
+                      ? "bg-white/5 cursor-not-allowed text-slate-500"
+                      : "bg-white/5 text-cyan-400 hover:bg-white/10"
                   }`}
                 >
                   {loading ? "Wysyłanie..." : "Wyślij"}
@@ -222,7 +222,7 @@ export default function ContactSection() {
             onClick={() =>
               window.open("https://github.com/Seweryn999", "_blank")
             }
-            className="!px-2 !py-2 flex items-center gap-4 bg-white text-blue-500 rounded-md border-2 border-blue-300 transition-all duration-300 hover:bg-blue-50 hover:scale-105 hover:shadow-[0_0_10px_#60a5fa]"
+            className="!px-2 !py-2 flex items-center gap-4 bg-white/5 text-cyan-400 rounded-md border-2 border-cyan-400/30 transition-all duration-300 hover:bg-white/10 hover:scale-105 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
           >
             <Github className="w-6 h-6" />
             GitHub
@@ -235,7 +235,7 @@ export default function ContactSection() {
                 "_blank"
               )
             }
-            className="!mb-4 !px-2 !py-2 flex items-center gap-4 bg-white text-blue-500 rounded-md border-2 border-blue-300 transition-all duration-300 hover:bg-blue-50 hover:scale-105 hover:shadow-[0_0_10px_#60a5fa]"
+            className="!mb-4 !px-2 !py-2 flex items-center gap-4 bg-white/5 text-cyan-400 rounded-md border-2 border-cyan-400/30 transition-all duration-300 hover:bg-white/10 hover:scale-105 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
           >
             <Linkedin className="w-6 h-6" />
             LinkedIn

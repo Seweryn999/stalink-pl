@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Stars } from "@react-three/drei";
 import Text3DComponent from "./Text3D";
 import { usePathname } from "next/navigation";
 
@@ -39,8 +39,20 @@ const Scene: React.FC = () => {
             fov: isMobile ? 75 : 55,
           }}
         >
-          <ambientLight intensity={0.7} />
-          <directionalLight position={[2, 5, 3]} intensity={1.2} />
+          <ambientLight intensity={0.4} />
+          <directionalLight position={[2, 5, 3]} intensity={1} />
+          <pointLight position={[0, 1, 3]} intensity={3} color="#22d3ee" />
+          <pointLight position={[-3, -1, 2]} intensity={2} color="#a78bfa" />
+
+          <Stars
+            radius={50}
+            depth={30}
+            count={1500}
+            factor={2}
+            saturation={0}
+            fade
+            speed={0.5}
+          />
 
           <Text3DComponent
             text="STALINK"
@@ -52,8 +64,11 @@ const Scene: React.FC = () => {
             enableZoom={false}
             enablePan={false}
             enableRotate={true}
-            maxPolarAngle={Math.PI / 2}
-            minPolarAngle={0}
+            autoRotate={false}
+            maxPolarAngle={Math.PI / 1.7}
+            minPolarAngle={Math.PI / 2.3}
+            maxAzimuthAngle={Math.PI / 6}
+            minAzimuthAngle={-Math.PI / 6}
           />
         </Canvas>
       )}

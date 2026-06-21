@@ -54,11 +54,7 @@ export default function AiServicesSection() {
   };
 
   const openChat = () => {
-    if (typeof window !== "undefined" && window.voiceflow?.chat?.open) {
-      window.voiceflow.chat.open();
-    } else {
-      console.error("Voiceflow chat is not initialized yet.");
-    }
+    window.dispatchEvent(new Event("open-chat"));
   };
 
   return (
@@ -67,7 +63,7 @@ export default function AiServicesSection() {
 
       <motion.section
         id="automatyzacja-ai"
-        className="bg-gradient-to-b from-blue-50 to-blue-100/60 flex flex-col justify-center min-h-screen py-12 pt-20 md:pt-24 scroll-mt-20 md:scroll-mt-24"
+        className="bg-[#0a0e1f] flex flex-col justify-center min-h-screen py-12 pt-20 md:pt-24 scroll-mt-20 md:scroll-mt-24"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -75,10 +71,10 @@ export default function AiServicesSection() {
       >
         <div className="flex-grow flex flex-col justify-center max-w-6xl mx-auto px-4 space-y-12">
           <motion.div className="text-center" variants={itemVariants}>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-blue-800 mb-6">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-cyan-400 mb-6">
               Usługi Automatyzacji AI
             </h2>
-            <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">
               Wdrożenie inteligentnych rozwiązań AI na stronie internetowej to
               nie tylko prestiż, ale realne korzyści: skrócenie czasu obsługi
               klienta, wyższe konwersje i łatwiejsze skalowanie biznesu. Poznaj
@@ -94,7 +90,7 @@ export default function AiServicesSection() {
             {services.map((svc) => (
               <motion.div
                 key={svc.title}
-                className="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center transition-transform transform hover:scale-105"
+                className="bg-white/[0.04] rounded-2xl shadow-xl p-8 flex flex-col items-center transition-transform transform hover:scale-105"
                 variants={itemVariants}
               >
                 <div className="w-24 h-24 mb-4 relative">
@@ -105,20 +101,20 @@ export default function AiServicesSection() {
                     className="object-contain"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-blue-800 mb-2 text-center">
+                <h3 className="text-xl font-bold text-cyan-400 mb-2 text-center">
                   {svc.title}
                 </h3>
-                <p className="text-gray-600 mb-4 text-center">
+                <p className="text-slate-300 mb-4 text-center">
                   {svc.description}
                 </p>
-                <ul className="list-disc list-inside text-gray-600 mb-6 space-y-1 text-left text-sm">
+                <ul className="list-disc list-inside text-slate-300 mb-6 space-y-1 text-left text-sm">
                   {svc.benefits.map((b, i) => (
                     <li key={i}>{b}</li>
                   ))}
                 </ul>
                 <button
                   onClick={openChat}
-                  className="mt-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 text-sm"
+                  className="mt-auto px-4 py-2 bg-cyan-500 text-[#05060f] font-semibold rounded-full hover:bg-cyan-400 text-sm"
                 >
                   Skontaktuj się
                 </button>
@@ -128,12 +124,12 @@ export default function AiServicesSection() {
         </div>
       </motion.section>
 
-      <section className="bg-gradient-to-b from-blue-100/60 to-blue-50 py-16">
+      <section className="bg-[#070a17] py-16">
         <div className="max-w-4xl mx-auto px-4">
-          <h3 className="text-3xl font-bold text-center text-blue-800 mb-8">
+          <h3 className="text-3xl font-bold text-center text-cyan-400 mb-8">
             Dlaczego automatyzacja jest kluczowa?
           </h3>
-          <ul className="list-disc list-inside text-gray-700 space-y-3 text-base">
+          <ul className="list-disc list-inside text-slate-300 space-y-3 text-base">
             <li>
               Obsługa 24/7: Twoi klienci nigdy nie czekają, nawet poza godzinami
               pracy.
@@ -158,7 +154,7 @@ export default function AiServicesSection() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-400 py-24 md:py-32">
+      <section className="bg-gradient-to-br from-[#0a0e1f] via-[#15203f] to-[#1d2b54] py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-4 text-center text-white space-y-6">
           <h3 className="text-3xl font-bold">Zacznij automatyzować już dziś</h3>
           <p className="text-lg">
@@ -168,7 +164,7 @@ export default function AiServicesSection() {
           </p>
           <button
             onClick={openChat}
-            className="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition"
+            className="inline-block px-8 py-3 bg-white text-cyan-400 font-semibold rounded-full hover:bg-slate-100 transition"
           >
             Umów konsultację
           </button>

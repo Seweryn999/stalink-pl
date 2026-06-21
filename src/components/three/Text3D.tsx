@@ -29,9 +29,10 @@ const Text3DComponent: React.FC<Text3DProps> = ({
     }
   }, [isMobile]);
 
-  useFrame(() => {
+  useFrame(({ clock }) => {
     if (groupRef.current) {
       groupRef.current.rotation.y += 0.003;
+      groupRef.current.position.y = Math.sin(clock.elapsedTime * 0.6) * 0.12;
     }
   });
 
@@ -52,16 +53,16 @@ const Text3DComponent: React.FC<Text3DProps> = ({
           >
             {text}
             <meshPhysicalMaterial
-              color="#0a1931"
-              metalness={0.9}
-              roughness={0.2}
-              clearcoat={0.9}
-              clearcoatRoughness={0.15}
-              emissive="#1b3b6f"
-              emissiveIntensity={0.7}
-              reflectivity={0.9}
+              color="#0e1a3d"
+              metalness={0.85}
+              roughness={0.15}
+              clearcoat={1}
+              clearcoatRoughness={0.1}
+              emissive="#22d3ee"
+              emissiveIntensity={1.1}
+              reflectivity={1}
               transparent={true}
-              opacity={0.95}
+              opacity={0.96}
             />
           </Text3D>
         </Center>

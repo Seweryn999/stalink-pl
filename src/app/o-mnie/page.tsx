@@ -43,11 +43,11 @@ export default function AboutPage() {
         }}
       />
       <Header />
-      <section className="min-h-screen py-20 sm:py-32 lg:py-40 flex justify-center bg-gradient-to-br from-white via-blue-100 to-blue-200">
+      <section className="min-h-screen py-20 sm:py-32 lg:py-40 flex justify-center bg-[#0a0e1f]">
         <div className="max-w-6xl w-full px-6 sm:px-8 lg:px-10 flex flex-col items-center gap-y-16">
           <link rel="icon" href="/logo.svg" />
           <motion.h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-widest text-gray-800 mb-12 text-center"
+            className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-widest text-white mb-12 text-center"
             variants={fadeInVariants}
             initial="hidden"
             animate="visible"
@@ -58,7 +58,7 @@ export default function AboutPage() {
 
           <div className="flex flex-col lg:flex-row gap-12 items-center w-full">
             <motion.div
-              className="relative group rounded-full border-4 border-blue-300 overflow-hidden w-72 h-72 flex-shrink-0 transition-all duration-500 hover:shadow-xl hover:scale-105"
+              className="relative group rounded-full border-4 border-cyan-400/20 overflow-hidden w-72 h-72 flex-shrink-0 transition-all duration-500 hover:shadow-xl hover:scale-105"
               variants={fadeInVariants}
               initial="hidden"
               animate="visible"
@@ -76,7 +76,7 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div
-              className="text-gray-700 leading-relaxed text-lg space-y-6 max-w-3xl text-left"
+              className="text-slate-300 leading-relaxed text-lg space-y-6 max-w-3xl text-left"
               variants={fadeInVariants}
               initial="hidden"
               animate="visible"
@@ -114,7 +114,7 @@ export default function AboutPage() {
             animate="visible"
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">
               Dlaczego używam tych technologii?
             </h2>
 
@@ -129,16 +129,16 @@ export default function AboutPage() {
                   return (
                     <motion.div
                       key={index}
-                      className="group relative border border-blue-300 rounded-xl p-6 shadow transition-transform transform hover:scale-105 hover:border-blue-600 bg-white"
+                      className="group relative border border-cyan-400/20 rounded-xl p-6 shadow transition-transform transform hover:scale-105 hover:border-cyan-400/50 bg-white/[0.03] backdrop-blur"
                       variants={fadeInVariants}
                       initial="hidden"
                       animate="visible"
                       transition={{ duration: 0.8, delay: 0.8 + index * 0.2 }}
                     >
-                      <h3 className="text-xl font-bold text-gray-800 mb-3">
+                      <h3 className="text-xl font-bold text-white mb-3">
                         {title}
                       </h3>
-                      <p className="text-gray-700">{descriptions[index]}</p>
+                      <p className="text-slate-300">{descriptions[index]}</p>
                     </motion.div>
                   );
                 }

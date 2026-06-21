@@ -46,7 +46,7 @@ export async function POST(request: Request) {
     }
 
     await adminDb.collection("mail").add({
-      to: ["seweryn.webdev@gmail.com"],
+      to: ["seweryn.stalinger@stalink.pl"],
       message: {
         subject: `Nowa wiadomość od ${name}`,
         text: `Od: ${name} <${email}>\n\n${message}`,

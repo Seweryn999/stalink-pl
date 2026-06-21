@@ -22,13 +22,4 @@ declare global {
       textGeometry: React.DetailedHTMLProps<any, any>;
     }
   }
-
-  interface Window {
-    voiceflow?: {
-      chat?: {
-        open: () => void;
-        load?: (config: any) => void;
-      };
-    };
-  }
 }

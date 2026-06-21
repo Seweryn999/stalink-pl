@@ -5,7 +5,7 @@ import Footer from "../../components/ui/Footer";
 
 const KontaktPage = () => {
   return (
-    <div className="bg-gradient-to-br from-white via-blue-100 to-blue-200 min-h-screen">
+    <div className="bg-[#0a0e1f] min-h-screen">
       <link rel="icon" href="/logo.svg" />
       <Header />
       <main>

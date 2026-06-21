@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
+import { ChatWidget } from "../components/chat/ChatWidget";
 
 export const metadata = {
   title: {
@@ -95,38 +96,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             `,
           }}
         />
-        <Script
-          id="voiceflow-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function (d, t) {
-                const v = d.createElement(t);
-                const s = d.getElementsByTagName(t)[0];
-                v.onload = function () {
-                  if (window.voiceflow?.chat?.load) {
-                    window.voiceflow.chat.load({
-                      verify: { projectID: "686e3f5fb79c3cad291cb4bf" },
-                      url: "https://general-runtime.voiceflow.com",
-                      versionID: "production",
-                      voice: {
-                        url: "https://runtime-api.voiceflow.com",
-                      },
-                    });
-                  }
-                };
-                v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-                v.type = "text/javascript";
-                s.parentNode.insertBefore(v, s);
-              })(document, "script");
-            `,
-          }}
-        />
       </head>
-      <body className="w-full relative text-gray-800 overflow-x-hidden min-h-screen bg-gradient-to-br from-[#e1effb] via-[#d0e7f9] to-[#f0f7ff]">
+      <body className="w-full relative text-slate-100 overflow-x-hidden min-h-screen bg-[#05060f]">
+        <div className="fixed inset-0 -z-10 bg-gradient-to-b from-[#05060f] via-[#0a0e1f] to-[#05060f]" />
+        <div className="starfield fixed inset-0 -z-10" />
         <Analytics />
         <Toaster />
         <div className="relative z-10 w-full">{children}</div>
+        <ChatWidget />
       </body>
     </html>
   );
