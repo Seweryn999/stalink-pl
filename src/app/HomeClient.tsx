@@ -2,13 +2,7 @@
 
 import React from "react";
 import Script from "next/script";
-import Header from "../components/ui/Header";
-import HeroSection from "./sections/HeroSection";
-import AboutSection from "./sections/AboutSection";
-import ProjectsSection from "./sections/ProjectsSection";
-import ContactSection from "./sections/ContactSection";
-import Footer from "../components/ui/Footer";
-import AiFeatureSection from "./sections/AiSection";
+import StalinkLanding from "./sections/StalinkLanding";
 
 export default function HomeClient() {
   return (
@@ -51,13 +45,7 @@ export default function HomeClient() {
       />
 
       <main>
-        <Header />
-        <HeroSection />
-        <AboutSection />
-        <AiFeatureSection />
-        <ProjectsSection />
-        <ContactSection />
-        <Footer />
+        <StalinkLanding />
       </main>
     </>
   );
