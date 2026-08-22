@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
 import { adminDb } from "@/lib/firebaseAdmin";
-import { getMessaging } from "firebase-admin/messaging";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, message, fcmToken } = body;
+    const { name, email, message } = body;
 
     if (!name || name.trim().length < 2) {
       return NextResponse.json(
@@ -35,16 +34,6 @@ export async function POST(request: Request) {
       timestamp: new Date(),
     });
 
-    if (fcmToken) {
-      await getMessaging().send({
-        notification: {
-          title: "Nowa wiadomość!",
-          body: `Od: ${name} (${email}) — ${message.slice(0, 60)}...`,
-        },
-        token: fcmToken,
-      });
-    }
-
     await adminDb.collection("mail").add({
       to: ["seweryn.stalinger@stalink.pl"],
       message: {
@@ -56,7 +45,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ id: docRef.id }, { status: 200 });
   } catch (error: any) {
-    console.error("❌ Błąd podczas zapisu, powiadomienia lub maila:", error);
+    console.error("❌ Błąd podczas zapisu wiadomości lub maila:", error);
     return NextResponse.json(
       { error: "Wystąpił błąd serwera. Spróbuj ponownie później." },
       { status: 500 }

@@ -2,7 +2,6 @@ import "./globals.css";
 import { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
-import { Toaster } from "@/components/ui/sonner";
 import { ChatWidget } from "../components/chat/ChatWidget";
 
 export const metadata = {
@@ -101,7 +100,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <div className="fixed inset-0 -z-10 bg-gradient-to-b from-[#05060f] via-[#0a0e1f] to-[#05060f]" />
         <div className="starfield fixed inset-0 -z-10" />
         <Analytics />
-        <Toaster />
         <div className="relative z-10 w-full">{children}</div>
         <ChatWidget />
       </body>
