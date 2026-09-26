@@ -12,6 +12,12 @@ import {
 } from "react";
 import { Space_Grotesk, Space_Mono } from "next/font/google";
 
+// Animacje oznaczaja juz obsluzone elementy wlasnymi polami na wezle DOM.
+type MarkedElement = HTMLElement & {
+  _revealed?: boolean;
+  _counted?: boolean;
+};
+
 const grotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -217,10 +223,10 @@ export default function StalinkLanding() {
         el.style.opacity = "0";
         el.style.transform = "translateY(34px)";
         el.style.willChange = "opacity,transform";
-        (el as any)._revealed = false;
+        (el as MarkedElement)._revealed = false;
       });
       const counterEls = q("[data-count]") as HTMLElement[];
-      counterEls.forEach((el) => ((el as any)._counted = false));
+      counterEls.forEach((el) => ((el as MarkedElement)._counted = false));
       const sections = q("[data-section]");
       const dots = q("[data-dot]");
 
@@ -289,19 +295,19 @@ export default function StalinkLanding() {
             d.style.boxShadow = on ? "0 0 10px rgba(34,211,238,.8)" : "none";
           });
         revealEls.forEach((el) => {
-          if (!(el as any)._revealed) {
+          if (!(el as MarkedElement)._revealed) {
             const r = el.getBoundingClientRect();
             if (r.top < innerHeight * 0.9 && r.bottom > 0) {
-              (el as any)._revealed = true;
+              (el as MarkedElement)._revealed = true;
               tweenReveal(el);
             }
           }
         });
         counterEls.forEach((el) => {
-          if (!(el as any)._counted) {
+          if (!(el as MarkedElement)._counted) {
             const r = el.getBoundingClientRect();
             if (r.top < innerHeight * 0.85 && r.bottom > 0) {
-              (el as any)._counted = true;
+              (el as MarkedElement)._counted = true;
               animateCount(el);
             }
           }
@@ -410,8 +416,12 @@ export default function StalinkLanding() {
       }
       setSubmitted(true);
       setForm({ name: "", email: "", message: "" });
-    } catch (err: any) {
-      setError(err.message || "Wystąpił błąd. Spróbuj ponownie.");
+    } catch (err: unknown) {
+      setError(
+        err instanceof Error && err.message
+          ? err.message
+          : "Wystąpił błąd. Spróbuj ponownie."
+      );
     } finally {
       setLoading(false);
     }

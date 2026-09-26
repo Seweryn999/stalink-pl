@@ -30,12 +30,14 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*  # <- To obejmuje .env.local
+# env files - obejmuje .env, .env.local itd.
+# UWAGA: git nie obsluguje komentarzy w tej samej linii co wzorzec
+.env
+.env.*
+!.env.example
 
 # vercel
 .vercel
-*.json
 
 # typescript
 *.tsbuildinfo

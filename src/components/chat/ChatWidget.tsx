@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { MessageCircle, Send, X } from "lucide-react";
 
+const MAX_HISTORY = 12;
+
 const GREETING =
   "Cześć! Jestem asystentem AI firmy STALINK. Zapytaj mnie o strony internetowe, automatyzację AI, projekty lub wycenę.";
 
@@ -43,17 +45,21 @@ export function ChatWidget() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: nextMessages }),
+        // Wysylamy tylko ogon rozmowy - serwer i tak odrzuca dluzsza historie.
+        body: JSON.stringify({ messages: nextMessages.slice(-MAX_HISTORY) }),
       });
 
-      if (!res.ok) {
+      const data = (await res.json().catch(() => null)) as {
+        message?: string;
+      } | null;
+
+      if (!data?.message) {
         throw new Error("Request failed");
       }
 
-      const data = (await res.json()) as { message: string };
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: data.message },
+        { role: "assistant", content: data.message as string },
       ]);
     } catch {
       setMessages((prev) => [

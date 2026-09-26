@@ -1,24 +1,31 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useSyncExternalStore } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import Text3DComponent from "./Text3D";
 import { usePathname } from "next/navigation";
 
+const MOBILE_BREAKPOINT = 768;
+
+function subscribeToResize(onChange: () => void) {
+  window.addEventListener("resize", onChange);
+  return () => window.removeEventListener("resize", onChange);
+}
+
+const getIsMobile = () => window.innerWidth < MOBILE_BREAKPOINT;
+
+// Na serwerze nie znamy szerokosci okna - tak jak wczesniej startujemy od
+// wariantu desktopowego, a klient koryguje to przy pierwszym renderze.
+const getIsMobileOnServer = () => false;
+
 const Scene: React.FC = () => {
   const canvasRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
   const pathname = usePathname();
 
-  const updateDeviceType = () => {
-    const width = window.innerWidth;
-    setIsMobile(width < 768); 
-  };
-
-  useEffect(() => {
-    updateDeviceType();
-    window.addEventListener("resize", updateDeviceType);
-    return () => window.removeEventListener("resize", updateDeviceType);
-  }, []);
+  const isMobile = useSyncExternalStore(
+    subscribeToResize,
+    getIsMobile,
+    getIsMobileOnServer
+  );
 
   return (
     <div

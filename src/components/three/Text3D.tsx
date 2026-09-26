@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useEffect, useState } from "react";
+import React, { Suspense, useRef, useEffect } from "react";
 import { Text3D, Center } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { Mesh, Group } from "three";
@@ -16,11 +16,6 @@ const Text3DComponent: React.FC<Text3DProps> = ({
 }) => {
   const textRef = useRef<Mesh>(null!);
   const groupRef = useRef<Group>(null!);
-  const [renderKey, setRenderKey] = useState(0);
-
-  useEffect(() => {
-    setRenderKey((prevKey) => prevKey + 1);
-  }, [isMobile]);
 
   useEffect(() => {
     if (textRef.current) {
@@ -38,7 +33,7 @@ const Text3DComponent: React.FC<Text3DProps> = ({
 
   return (
     <Suspense fallback={null}>
-      <group ref={groupRef} key={renderKey}>
+      <group ref={groupRef} key={String(isMobile)}>
         <Center position={position}>
           <Text3D
             ref={textRef}

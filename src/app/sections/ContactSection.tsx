@@ -64,11 +64,12 @@ export default function ContactSection() {
       console.log("Wiadomość zapisana z ID:", result.id);
       setSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Błąd podczas wysyłania wiadomości:", error);
       setError(
-        error.message ||
-          "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie."
+        error instanceof Error && error.message
+          ? error.message
+          : "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie."
       );
     } finally {
       setLoading(false);
