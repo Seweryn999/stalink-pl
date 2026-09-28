@@ -6,6 +6,7 @@ import Header from "../../components/ui/Header";
 import Footer from "../../components/ui/Footer";
 import { motion } from "framer-motion";
 
+const WojewodaStudioImage = "/images/wojewodastudio.png";
 const BBHairSpaImage = "/images/bbhairspa.png";
 const TaskFlowImage = "/images/taskFlow.png";
 const ExpenseTrackerImage = "/images/expenseTracker.png";
@@ -28,6 +29,43 @@ export default function ProjectsPage() {
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 p-4 w-full">
+            <motion.div
+              className="relative bg-white/[0.04] rounded-xl shadow-xl transition-all duration-300 overflow-hidden group mx-auto w-full max-w-[300px] border border-cyan-400/25 hover:shadow-[0_0_25px_rgba(34,211,238,0.4)] hover:scale-105"
+              variants={fadeInVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.5, delay: 0.05 }}
+              viewport={{ once: true }}
+            >
+              <div className="aspect-square relative w-full overflow-hidden rounded-t-xl">
+                <Image
+                  src={WojewodaStudioImage}
+                  alt="Wojewoda Studio – Krystian Wojewoda Hair Design"
+                  width={300}
+                  height={300}
+                  placeholder="empty"
+                  priority
+                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="relative p-4 flex flex-col items-center bg-white/[0.03] rounded-b-xl">
+                <h3 className="text-2xl font-semibold mb-4">Wojewoda Studio</h3>
+                <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                  Strona salonu Krystian Wojewoda Hair Design w Łodzi —
+                  nowoczesna, responsywna, SEO-friendly, z ciemnym stylem
+                  podkreślającym charakter marki.
+                </p>
+                <a
+                  href="https://wojewodastudio.pl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-2 px-6 py-2 bg-cyan-500 text-white rounded-md font-medium hover:bg-cyan-400 transition-all duration-200"
+                >
+                  Zobacz więcej
+                </a>
+              </div>
+            </motion.div>
+
             <motion.div
               className="relative bg-white/[0.04] rounded-xl shadow-xl transition-all duration-300 overflow-hidden group mx-auto w-full max-w-[300px] border border-cyan-400/25 hover:shadow-[0_0_25px_rgba(34,211,238,0.4)] hover:scale-105"
               variants={fadeInVariants}
@@ -64,7 +102,7 @@ export default function ProjectsPage() {
               </div>
             </motion.div>
 
-            {["Wolne miejsce", "Wolne miejsce"].map((title, index) => (
+            {["Wolne miejsce"].map((title, index) => (
               <motion.div
                 key={index}
                 className="relative bg-white/[0.03] rounded-xl shadow-xl transition-all duration-300 overflow-hidden group mx-auto w-full max-w-[300px] border border-cyan-400/25 hover:shadow-[0_0_25px_rgba(34,211,238,0.4)] hover:scale-105"

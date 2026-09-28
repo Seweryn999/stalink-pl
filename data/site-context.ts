@@ -18,7 +18,8 @@ O Sewerynie Stalingerze:
 Frontend developer specjalizujący się w Next.js, React, TypeScript i Tailwind CSS. Posiada certyfikaty: GoIT Fullstack Developer oraz Meta Advanced React. Tworzy strony, które łączą estetykę z realną skutecznością sprzedażową.
 
 Zrealizowane projekty:
-- BB Hair Spa / Hair Salon (Krystian Wojewoda Hair Design) – strona salonu fryzjerskiego w Next.js, responsywna, SEO-friendly, z ciemnym, eleganckim stylem.
+- Wojewoda Studio (Krystian Wojewoda Hair Design, Łódź – Ogrody Geyera) – najnowsza realizacja: strona salonu fryzjerskiego, nowoczesna, responsywna, SEO-friendly, z ciemnym stylem podkreślającym charakter marki. Strona: https://wojewodastudio.pl
+- BB Hair Spa / Hair Salon – strona salonu fryzjerskiego w Next.js, responsywna, SEO-friendly, z ciemnym, eleganckim stylem.
 - TaskFlow AI – aplikacja webowa.
 - Finance Tracker (Expense Tracker) – aplikacja do śledzenia finansów osobistych w Next.js.
 - Filmoteka-JS – aplikacja do katalogowania filmów.

@@ -1928,128 +1928,152 @@ export default function StalinkLanding() {
           </div>
 
           {/* Featured */}
-          <div
-            data-reveal="120"
-            className="stl-grid-2"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1.08fr .92fr",
-              border: "1px solid rgba(120,200,230,.14)",
-              borderRadius: 24,
-              overflow: "hidden",
-              background: "rgba(255,255,255,.02)",
-              marginBottom: 24,
-            }}
-          >
+          {(
+            [
+              {
+                img: "/images/wojewodastudio.png",
+                imgPosition: "center 35%",
+                title: "Wojewoda Studio",
+                badge: "★ Najnowsza realizacja",
+                desc: "Strona salonu fryzjerskiego Krystian Wojewoda Hair Design z Łodzi (Ogrody Geyera) — nowoczesny, ciemny design podkreślający charakter marki, pełna responsywność, optymalizacja SEO i szybkie umawianie wizyt.",
+                tags: ["Next.js", "SEO", "Rezerwacje"],
+                href: "https://wojewodastudio.pl",
+              },
+              {
+                img: "/images/bbhairspa.png",
+                imgPosition: "top center",
+                title: "BB Hair Spa",
+                badge: "★ Wyróżniony",
+                desc: "Strona salonu fryzjerskiego w Next.js — responsywna, SEO-friendly, z eleganckim, ciemnym stylem.",
+                tags: ["Next.js", "SEO", "Responsywność"],
+                href: "https://seweryn999.github.io/bb-hair-spa/",
+              },
+            ] as const
+          ).map(({ img, imgPosition, title, badge, desc, tags, href }) => (
             <div
+              key={title}
+              data-reveal="120"
+              className="stl-grid-2"
               style={{
-                position: "relative",
-                minHeight: 380,
+                display: "grid",
+                gridTemplateColumns: "1.08fr .92fr",
+                border: "1px solid rgba(120,200,230,.14)",
+                borderRadius: 24,
                 overflow: "hidden",
+                background: "rgba(255,255,255,.02)",
+                marginBottom: 24,
               }}
             >
-              <img
-                src="/images/bbhairspa.png"
-                alt="BB Hair Spa"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  objectPosition: "top center",
-                }}
-              />
               <div
                 style={{
-                  position: "absolute",
-                  inset: 0,
-                  background:
-                    "linear-gradient(105deg,transparent 40%,rgba(8,10,20,.85))",
-                }}
-              />
-            </div>
-            <div
-              style={{
-                padding: 46,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-              }}
-            >
-              <span
-                style={{
-                  alignSelf: "flex-start",
-                  fontFamily: FM,
-                  fontSize: 11,
-                  letterSpacing: ".16em",
-                  textTransform: "uppercase",
-                  color: "#22d3ee",
-                  border: "1px solid rgba(34,211,238,.35)",
-                  padding: "5px 12px",
-                  borderRadius: 999,
-                  marginBottom: 20,
+                  position: "relative",
+                  minHeight: 380,
+                  overflow: "hidden",
                 }}
               >
-                ★ Wyróżniony
-              </span>
-              <h3
-                style={{
-                  margin: "0 0 12px",
-                  fontSize: 30,
-                  fontWeight: 700,
-                  color: "#fff",
-                }}
-              >
-                BB Hair Spa
-              </h3>
-              <p
-                style={{
-                  margin: "0 0 24px",
-                  color: "#9aa3b8",
-                  fontSize: 16,
-                  lineHeight: 1.65,
-                }}
-              >
-                Strona salonu fryzjerskiego (Krystian Wojewoda Hair Design) w
-                Next.js — responsywna, SEO-friendly, z eleganckim, ciemnym
-                stylem i rezerwacją online.
-              </p>
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: 8,
-                  marginBottom: 28,
-                }}
-              >
-                {["Next.js", "SEO", "Rezerwacje"].map((t) => (
-                  <span key={t} style={techTag}>
-                    {t}
-                  </span>
-                ))}
+                <img
+                  src={img}
+                  alt={title}
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: imgPosition,
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(105deg,transparent 40%,rgba(8,10,20,.85))",
+                  }}
+                />
               </div>
-              <a
-                href="#kontakt"
-                data-magnetic="true"
+              <div
                 style={{
-                  alignSelf: "flex-start",
-                  textDecoration: "none",
-                  color: "#06070e",
-                  background: "#22d3ee",
-                  fontWeight: 600,
-                  fontSize: 15,
-                  padding: "13px 24px",
-                  borderRadius: 999,
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
+                  padding: 46,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
                 }}
               >
-                Zobacz projekt <span>→</span>
-              </a>
+                <span
+                  style={{
+                    alignSelf: "flex-start",
+                    fontFamily: FM,
+                    fontSize: 11,
+                    letterSpacing: ".16em",
+                    textTransform: "uppercase",
+                    color: "#22d3ee",
+                    border: "1px solid rgba(34,211,238,.35)",
+                    padding: "5px 12px",
+                    borderRadius: 999,
+                    marginBottom: 20,
+                  }}
+                >
+                  {badge}
+                </span>
+                <h3
+                  style={{
+                    margin: "0 0 12px",
+                    fontSize: 30,
+                    fontWeight: 700,
+                    color: "#fff",
+                  }}
+                >
+                  {title}
+                </h3>
+                <p
+                  style={{
+                    margin: "0 0 24px",
+                    color: "#9aa3b8",
+                    fontSize: 16,
+                    lineHeight: 1.65,
+                  }}
+                >
+                  {desc}
+                </p>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 8,
+                    marginBottom: 28,
+                  }}
+                >
+                  {tags.map((t) => (
+                    <span key={t} style={techTag}>
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-magnetic="true"
+                  style={{
+                    alignSelf: "flex-start",
+                    textDecoration: "none",
+                    color: "#06070e",
+                    background: "#22d3ee",
+                    fontWeight: 600,
+                    fontSize: 15,
+                    padding: "13px 24px",
+                    borderRadius: 999,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                  }}
+                >
+                  Zobacz projekt <span>→</span>
+                </a>
+              </div>
             </div>
-          </div>
+          ))}
 
           {/* Grid of 3 */}
           <div
