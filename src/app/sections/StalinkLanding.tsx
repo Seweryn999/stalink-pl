@@ -48,8 +48,6 @@ const GLOBAL_CSS = `
   @keyframes stl-bobArrow { 0%,100%{ transform:translateY(0); opacity:.5;} 50%{ transform:translateY(8px); opacity:1; } }
   @keyframes stl-shimmer { to { background-position:200% center; } }
   @media (max-width:760px){
-    #cursor-dot,#cursor-ring{ display:none!important; }
-    #stalink-root{ cursor:auto!important; }
     #stalink-root .stl-grid-2 { grid-template-columns:1fr!important; }
     #stalink-root .stl-grid-3 { grid-template-columns:1fr!important; }
     #stalink-root .stl-grid-4 { grid-template-columns:repeat(2,1fr)!important; }
@@ -90,7 +88,7 @@ export default function StalinkLanding() {
     });
   }, []);
 
-  // Port of the design comp's support.js: cursor, particles, scroll system
+  // Port of the design comp's support.js: particles, scroll system
   // (reveal + counters + nav + side dots), magnetic, tilt, parallax.
   useEffect(() => {
     const root = rootRef.current;
@@ -99,43 +97,6 @@ export default function StalinkLanding() {
     const rafs: number[] = [];
     const q = (sel: string) =>
       Array.from(root.querySelectorAll<HTMLElement>(sel));
-
-    // ---- Cursor ----
-    (() => {
-      const dot = document.getElementById("cursor-dot");
-      const ring = document.getElementById("cursor-ring");
-      if (!dot || !ring) return;
-      let mx = innerWidth / 2,
-        my = innerHeight / 2,
-        rx = mx,
-        ry = my,
-        s = 1,
-        cs = 1;
-      const move = (e: MouseEvent) => {
-        mx = e.clientX;
-        my = e.clientY;
-        dot.style.transform = `translate(${mx}px,${my}px)`;
-      };
-      const over = (e: MouseEvent) => {
-        const t = e.target as HTMLElement;
-        s = t.closest && t.closest("a,button,[data-magnetic]") ? 2.1 : 1;
-      };
-      window.addEventListener("mousemove", move);
-      window.addEventListener("mouseover", over);
-      cleanups.push(() => {
-        window.removeEventListener("mousemove", move);
-        window.removeEventListener("mouseover", over);
-      });
-      const loop = () => {
-        rx += (mx - rx) * 0.16;
-        ry += (my - ry) * 0.16;
-        cs += (s - cs) * 0.15;
-        ring.style.transform = `translate(${rx}px,${ry}px) scale(${cs})`;
-        ring.style.opacity = cs > 1.4 ? "0.5" : "1";
-        rafs.push(requestAnimationFrame(loop));
-      };
-      loop();
-    })();
 
     // ---- Particles ----
     (() => {
@@ -466,44 +427,10 @@ export default function StalinkLanding() {
         background: "#06070e",
         color: "#e8ecf4",
         position: "relative",
-        cursor: "none",
         overflowX: "hidden",
       }}
     >
       <style>{GLOBAL_CSS}</style>
-
-      <div
-        id="cursor-dot"
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: 7,
-          height: 7,
-          margin: "-3.5px 0 0 -3.5px",
-          borderRadius: "50%",
-          background: "#22d3ee",
-          zIndex: 9999,
-          pointerEvents: "none",
-          mixBlendMode: "screen",
-        }}
-      />
-      <div
-        id="cursor-ring"
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: 38,
-          height: 38,
-          margin: "-19px 0 0 -19px",
-          borderRadius: "50%",
-          border: "1px solid rgba(34,211,238,.55)",
-          zIndex: 9998,
-          pointerEvents: "none",
-          transition: "width .25s ease,height .25s ease,opacity .25s ease",
-        }}
-      />
 
       {/* NAV */}
       <nav
