@@ -1873,7 +1873,7 @@ export default function StalinkLanding() {
                 badge: "★ Wyróżniony",
                 desc: "Strona salonu fryzjerskiego w Next.js — responsywna, SEO-friendly, z eleganckim, ciemnym stylem.",
                 tags: ["Next.js", "SEO", "Responsywność"],
-                href: "https://seweryn999.github.io/bb-hair-spa/",
+                href: "https://www.bbhairspa.pl/",
               },
             ] as const
           ).map(({ img, imgPosition, title, badge, desc, tags, href }) => (

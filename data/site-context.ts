@@ -19,7 +19,7 @@ Frontend developer specjalizujący się w Next.js, React, TypeScript i Tailwind 
 
 Zrealizowane projekty:
 - Wojewoda Studio (Krystian Wojewoda Hair Design, Łódź – Ogrody Geyera) – najnowsza realizacja: strona salonu fryzjerskiego, nowoczesna, responsywna, SEO-friendly, z ciemnym stylem podkreślającym charakter marki. Strona: https://wojewodastudio.pl
-- BB Hair Spa / Hair Salon – strona salonu fryzjerskiego w Next.js, responsywna, SEO-friendly, z ciemnym, eleganckim stylem.
+- BB Hair Spa / Hair Salon – strona salonu fryzjerskiego w Next.js, responsywna, SEO-friendly, z ciemnym, eleganckim stylem. Strona: https://www.bbhairspa.pl/
 - TaskFlow AI – aplikacja webowa.
 - Finance Tracker (Expense Tracker) – aplikacja do śledzenia finansów osobistych w Next.js.
 - Filmoteka-JS – aplikacja do katalogowania filmów.
