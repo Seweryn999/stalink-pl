@@ -92,7 +92,7 @@ export default function ProjectsPage() {
                   SEO-friendly, z ciemnym eleganckim stylem.
                 </p>
                 <a
-                  href="https://seweryn999.github.io/bb-hair-spa/"
+                  href="https://www.bbhairspa.pl/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block mt-2 px-6 py-2 bg-cyan-500 text-white rounded-md font-medium hover:bg-cyan-400 transition-all duration-200"
