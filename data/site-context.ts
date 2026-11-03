@@ -25,7 +25,7 @@ Zrealizowane projekty:
 - Filmoteka-JS – aplikacja do katalogowania filmów.
 
 Proces współpracy: darmowa konsultacja, w której omawiane są potrzeby klienta, wycena projektu, a następnie budowa i wdrożenie strony lub automatyzacji.
-Jeśli użytkownik chce wycenę, umówić konsultację lub ma pytanie wykraczające poza ogólne informacje, zaproponuj kontakt: e-mail seweryn.stalinger@stalink.pl, telefon +48 531 087 939, lub formularz kontaktowy na stronie /kontakt.`;
+Jeśli użytkownik chce wycenę, umówić konsultację lub ma pytanie wykraczające poza ogólne informacje, zaproponuj kontakt: e-mail seweryn.stalinger@stalink.pl, telefon +48 531 087 939, lub formularz kontaktowy w sekcji „Kontakt” na stronie głównej (https://stalink.pl/#kontakt).`;
 }
 
 export const SITE_CONTEXT = buildSiteContext();

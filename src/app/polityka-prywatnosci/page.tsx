@@ -1,14 +1,18 @@
 "use client";
 
 import React from "react";
-import Header from "../../components/ui/Header";
+import Link from "next/link";
 
 export default function PrivacyPolicy() {
   return (
     <section className="min-h-screen bg-[#0a0e1f] flex flex-col items-center px-4 py-12 md:py-20 text-slate-200">
-      <Header />
       <div className="max-w-4xl w-full px-4 space-y-10 pt-16 md:pt-20">
-        <link rel="icon" href="/logo.svg" />
+        <Link
+          href="/"
+          className="inline-block text-cyan-400 hover:text-cyan-300 transition-colors"
+        >
+          ← Wróć na stronę główną
+        </Link>
 
         <h1 className="text-3xl md:text-5xl font-black uppercase tracking-widest text-white mb-8 md:mb-12 text-center">
           Polityka Prywatności
